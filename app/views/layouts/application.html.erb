@@ -1,0 +1,21 @@
+
+<html>
+
+<head>
+  <title>Tutorial Track</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>  
+  <!-- DEFINED IN MAPPING_HELPER -->
+  <%= google_maps_api %>
+  <%= get_projects_latlongs(@projects_latlong) if @projects_latlong %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+ 
+<div class="container">
+  <%= yield %>
+</div>
+
+</body>
+</html>
