@@ -1,0 +1,35 @@
+<div class="nested-fields">
+  
+    <div class="row">
+      <div class="large-12 columns">
+        <%= f.label :name %><i>(opcional)</i><br>
+        <%= f.text_field :name, :placeholder => "Descripción del lugar, ej: 'Museo'." %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <%= f.label :location %><br>
+        <%= f.text_field :location, :placeholder => "Nombre de la localidad o zona administrativa." %>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.label :latitude %><i>(opcional)</i> <br>
+      <%= f.text_field :latitude, :placeholder => "Coordenadas geográficas del sitio de estudio en formato decimal." %>
+    </div>
+
+    <div class="large-6 columns">
+      <%= f.label :longitude %> <i>(opcional)</i><br>
+      <%= f.text_field :longitude,  :placeholder => "Coordenadas geográficas del sitio de estudio en formato decimal." %>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="small-12 columns">
+        <%= link_to_remove_association "Eliminar sitio de estudio", f, :class=>"tiny alert button"%>
+      </div>
+  </div>
+
+</div>

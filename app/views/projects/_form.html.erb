@@ -1,14 +1,15 @@
 <%= form_for(@project) do |f| %>
 
   <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<div data-alert class="alert-box alert">
+        Existen errores en el formulario
 
-      <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+
     </div>
   <% end %>
 
@@ -78,8 +79,11 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="large-12 columns">
+      <h2> Sitio de Estudio </h2>
 
-    <h2> Sitio de Estudio </h2>
+
   <%= f.fields_for :study_sites do |r| %>
 
     <div class="row">
@@ -107,13 +111,21 @@
       <%= r.text_field :longitude,  :placeholder => "Coordenadas geográficas del sitio de estudio en formato decimal." %>
     </div>
   </div>
+
   <% end %>
 
   <!-- Agregar otros SITIOS DE INVESTIGACION opcionalmente -->
+    <div id="links">
+          <%= link_to_add_association 'Agregar sitio de estudio', f, :study_sites, :class=>"tiny secondary button" %>
+    </div>
+
+
+    </div>
+  </div>
 
 <div class="row">
   <div class="small-9 columns">
-      <%= f.submit "Crear proyecto", :class=>"button radius" %>
+      <%= f.submit "Aceptar", :class=>"button radius" %>
   </div>
 </div>
 
