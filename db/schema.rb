@@ -11,14 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130928202617) do
+ActiveRecord::Schema.define(version: 20131011015821) do
 
   create_table "projects", force: true do |t|
-    t.float    "latitude"
-    t.float    "longitude"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "methodology"
+    t.string   "publication"
+    t.string   "summary"
+  end
+
+  create_table "projects_researchers", id: false, force: true do |t|
+    t.integer "project_id"
+    t.integer "researcher_id"
+  end
+
+  create_table "projects_study_sites", id: false, force: true do |t|
+    t.integer "project_id"
+    t.integer "study_site_id"
+  end
+
+  create_table "researchers", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "website"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "study_sites", force: true do |t|
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "gmaps"
   end
 
 end

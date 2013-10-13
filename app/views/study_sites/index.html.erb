@@ -1,0 +1,41 @@
+<h1>Listing study_sites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Data collection method</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Location</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @study_sites.each do |study_site| %>
+      <tr>
+        <td><%= study_site.start_date %></td>
+        <td><%= study_site.end_date %></td>
+        <td><%= study_site.data_collection_method %></td>
+        <td><%= study_site.name %></td>
+        <td><%= study_site.description %></td>
+        <td><%= study_site.latitude %></td>
+        <td><%= study_site.longitude %></td>
+        <td><%= study_site.location %></td>
+        <td><%= link_to 'Show', study_site %></td>
+        <td><%= link_to 'Edit', edit_study_site_path(study_site) %></td>
+        <td><%= link_to 'Destroy', study_site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Study site', new_study_site_path %>

@@ -1,4 +1,5 @@
 <%= form_for(@project) do |f| %>
+
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -11,19 +12,99 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="row ">
+    <div class="small-12 columns">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, :placeholder=>"Título que identifique el proyecto de investigación" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
+
+  <h2> Investigador responsable </h2>
+  <%= f.fields_for :researchers do |r| %>
+    <div class="row">
+      <div class="small-6 columns">
+        <%= r.label :name %><br>
+        <%= r.text_field :name, :placeholder => "Nombre y Apellido del investigador responsable" %>
+      </div>
+
+      <div class="small-6 columns">
+        <%= r.label :email %><br>
+        <%= r.text_field :email, :placeholder => "Correo electrónico del investigador responsable" %>
+      </div>
+    </div>
+  <% end %>
+  <!-- Agregar otros INVESTIGADORES opcionalmente -->
+
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.label :summary %><br>
+      <%= f.text_area :summary, :placeholder=>"Breve descripción del proyecto" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
+
+<div class="row">
+    <div class="large-12 columns">
+      <%= f.label :methodology %><br>
+      <%= f.text_area :methodology, :placeholder=>"Descripción de la metodología usada en el proyecto. Incluir enfoque metodologíco e instrumentos." %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.label :publications %><br>
+      <%= f.text_area :publication, :placeholder => "Resultados y publicaciones que se han producido en el proyecto (articulos de revistas, libros, presentaciones en congresos, otros)." %>
+    </div>
   </div>
+
+  <div class="row">
+      <div class="large-6 columns">
+        <%= f.label :start_date %><br>
+        <%= f.date_select :start_date,{:html => "width:auto;"} %>
+      </div>
+
+      <div class="large-6 columns">
+        <%= f.label :end_date %><br>
+        <%= f.date_select :end_date %>
+    </div>
+  </div>
+
+
+    <h2> Sitio de Estudio </h2>
+  <%= f.fields_for :study_sites do |r| %>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <%= r.label :name %><i>(opcional)</i><br>
+        <%= r.text_field :name, :placeholder => "Descripción del lugar, ej: 'Museo'." %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <%= r.label :location %><br>
+        <%= r.text_field :location, :placeholder => "Nombre de la localidad o zona administrativa." %>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="large-6 columns">
+      <%= r.label :latitude %><i>(opcional)</i> <br>
+      <%= r.text_field :latitude, :placeholder => "Coordenadas geográficas del sitio de estudio en formato decimal." %>
+    </div>
+
+    <div class="large-6 columns">
+      <%= r.label :longitude %> <i>(opcional)</i><br>
+      <%= r.text_field :longitude,  :placeholder => "Coordenadas geográficas del sitio de estudio en formato decimal." %>
+    </div>
+  </div>
+  <% end %>
+
+  <!-- Agregar otros SITIOS DE INVESTIGACION opcionalmente -->
+
+<div class="row">
+  <div class="small-9 columns">
+      <%= f.submit "Crear proyecto", :class=>"button radius" %>
+  </div>
+</div>
+
 <% end %>

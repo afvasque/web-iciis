@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @researcher.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @researcher.email %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @researcher.website %>
+</p>
+
+<%= link_to 'Edit', edit_researcher_path(@researcher) %> |
+<%= link_to 'Back', researchers_path %>

@@ -1,5 +1,25 @@
+<h1> Proyectos ICIIS PUC </h1>
 <div id="nav" class="dropSheet">
-	Nav Menu
-	hol ahola
+	<ul id="markers_list">  </ul>
 </div>
-<div id="map"></div>
+<div id="map">
+	
+	<%= gmaps("markers" => {"data" => @json, "options" => {"list_container" => "markers_list", "do_clustering" => true, 
+		"randomize" => true, "map" => "TERRAIN" }}) %>
+
+</div>
+
+<% content_for :scripts do %>
+
+<script type="text/javascript" charset="utf-8">
+
+  Gmaps.map.callback = function() {
+    Gmaps.map.map.setOptions({
+    	zoomControl: false,
+    	streetViewControl: false,
+    	panControl: false,
+    });
+  };
+</script>
+
+<% end %>

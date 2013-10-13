@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @study_site.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @study_site.end_date %>
+</p>
+
+<p>
+  <strong>Data collection method:</strong>
+  <%= @study_site.data_collection_method %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @study_site.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @study_site.description %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @study_site.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @study_site.longitude %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @study_site.location %>
+</p>
+
+<%= link_to 'Edit', edit_study_site_path(@study_site) %> |
+<%= link_to 'Back', study_sites_path %>

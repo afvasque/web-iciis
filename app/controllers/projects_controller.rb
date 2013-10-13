@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    projects = Project.all    
+    @projects = Project.all    
   end
 
   # GET /projects/1
@@ -17,6 +17,8 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @project.researchers.build
+    @project.study_sites.build
   end
 
   # GET /projects/1/edit
@@ -71,7 +73,13 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title, :latitude, :longitude)
+      params.require(:project).permit(
+        :id,
+        :title,
+        {:researchers_attributes => [:id, :name, :email]},
+        {:study_sites_attributes => [:id, :start_date, :end_date, :data_collection_method, :name, :description, 
+          :latitude, :longitude, :location]}
+        )
     end
 
   

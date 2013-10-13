@@ -1,4 +1,8 @@
 WebICIIS::Application.routes.draw do
+  resources :researchers
+
+  resources :study_sites
+
   resources :projects
 
   get "mapping/index"

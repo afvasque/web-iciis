@@ -17,10 +17,4 @@ module MappingHelper
   	end
 	end
 
-  def get_projects_latlongs(latlongs)
-    content_tag(:script, :type => "text/javascript") do
-      "var latlongs = "+latlongs.to_s;
-    end
-  end
-
 end
