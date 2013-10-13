@@ -8,6 +8,9 @@ class StudySite < ActiveRecord::Base
   	end
 
   	def gmaps4rails_address
-  		self.location
+  		if self.latitude.blank? or self.longitude.blank?
+  			self.location
+  		end
+  			[self.latitude , self.longitude]
 	end
 end

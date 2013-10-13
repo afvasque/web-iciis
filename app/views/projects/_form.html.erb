@@ -19,22 +19,32 @@
     </div>
   </div>
 
-  <h2> Investigador responsable </h2>
-  <%= f.fields_for :researchers do |r| %>
-    <div class="row">
-      <div class="small-6 columns">
-        <%= r.label :name %><br>
-        <%= r.text_field :name, :placeholder => "Nombre y Apellido del investigador responsable" %>
+  <div class="row">
+    <div class="large-12 columns">
+
+      <h2> Investigador responsable </h2>
+      <%= f.fields_for :researchers do |f| %>
+          <div class="row">
+            <div class="small-6 columns">
+              <%= f.label :name %><br>
+              <%= f.text_field :name, :placeholder => "Nombre y Apellido del investigador responsable" %>
+            </div>
+
+            <div class="small-6 columns">
+              <%= f.label :email %><br>
+              <%= f.text_field :email, :placeholder => "Correo electrónico del investigador responsable" %>
+            </div>
+          </div>
+      <% end %>
+      <!-- Agregar otros INVESTIGADORES opcionalmente -->
+      <h3> Otros investigadores </h3>
+      <div id="links">
+        <%= link_to_add_association 'Agregar investigador asistente', f, :researchers, :class=>"tiny secondary button" %>
       </div>
 
-      <div class="small-6 columns">
-        <%= r.label :email %><br>
-        <%= r.text_field :email, :placeholder => "Correo electrónico del investigador responsable" %>
-      </div>
     </div>
-  <% end %>
-  <!-- Agregar otros INVESTIGADORES opcionalmente -->
-
+  </div>
+  
   <div class="row">
     <div class="large-12 columns">
       <%= f.label :summary %><br>

@@ -1,0 +1,20 @@
+<div class="nested-fields">
+  <div class="row">
+    <div class="small-6 columns">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, :placeholder => "Nombre y Apellido del investigador asistente" %>
+    </div>
+
+    <div class="small-6 columns">
+      <%= f.label :email %><i>(opcional)</i><br>
+      <%= f.text_field :email, :placeholder => "Correo electrónico del investigador asistente" %>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <%= link_to_remove_association "Eliminar investigador asistente", f, :class=>"tiny alert button"%>
+      </div>
+    </div>
+
+</div>

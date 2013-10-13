@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
       params.require(:project).permit(
         :id,
         :title,
-        {:researchers_attributes => [:id, :name, :email]},
+        {:researchers_attributes => [:id, :name, :email, :_destroy]},
         {:study_sites_attributes => [:id, :start_date, :end_date, :data_collection_method, :name, :description, 
           :latitude, :longitude, :location]}
         )
