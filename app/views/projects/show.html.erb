@@ -1,19 +1,77 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "gmaps4rails" %>
+<div class="row">
+	<div class="small-12 columns">
+		<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
+		<div class="row ">
+			<div class="small-12 columns">
+				<h1><%= @project.title %></h1>
+			</div>
+		</div>
 
-<p>
-  <strong>Investigador responsable:</strong>
-  <%= @project.researchers.first.name %>
-</p>
+		<div class="row">
+			<div class="small-4 columns">
+				<div class="alert-box secondary">
+					Inicio: <%= @project.start_date %> - Fin: <%= @project.end_date %>
+				</div>
+			</div>
+		</div>
 
-<p> 
-	<strong>Sitio de estudio:</strong>
-  	<%= @project.study_sites.first.location %>
-</p>
+		<div class="row">
+			<div class="small-12 columns">
+				<h2 class="subheader"> Descripción del proyecto </h2>
+					<p> <%= @project.summary %> </p>
+			</div>
+		</div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+		<div class="row">
+			<div class="small-12 columns">
+				<%= render 'study_sites_map' %>
+			</div>
+		</div>
+
+		<div class="row ">
+			<div class="small-12 columns">
+				<h2 class="subheader">Investigador responsable</h2>
+		  		<%= @project.researchers.first.name %>
+			</div>
+		</div>
+
+		<div class="row">
+			<% if @assitant_researchers %>
+				<div class="small-12 columns">
+					<h3 class="subheader">Otros investigadores</h3>
+					<ul>
+						<% @assitant_researchers.each do |a| %>
+								<li><%= a.name %>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+		</div>
+
+
+		<div class="row">
+			<div class="small-12 columns">
+				<h2 class="subheader"> Metodología </h2>
+					<p> <%= @project.methodology %> </p>
+			</div>
+		</div>
+
+		<div class="row ">
+			<div class="small-12 columns">
+				<h2 class="subheader">Publicaciones</h2>
+			  	<% if @project_publication %>
+			  		<p> <%= @project.publication %> </p>
+			  	<% else %>
+			  		<p> Sin publicaciones </p>
+			  	<% end %>
+			</div>
+		</div>
+
+
+		<%= link_to 'Edit', edit_project_path(@project) %> |
+		<%= link_to 'Back', projects_path %>
+
+	</div>
+</div>

@@ -11,6 +11,6 @@ class StudySite < ActiveRecord::Base
   		if self.latitude.blank? or self.longitude.blank?
   			self.location
   		end
-  			[self.latitude , self.longitude]
+  			[self.latitude, self.longitude]
 	end
 end

@@ -1,0 +1,23 @@
+<div class="map">
+
+	<%= gmaps({
+    "markers" => {"data" => @json}, 
+    "map_options"=>{"auto_zoom" => false} 
+  }) %>
+
+</div>
+
+<% content_for :scripts do %>
+
+<script type="text/javascript" charset="utf-8">
+
+  Gmaps.map.callback = function() {
+    Gmaps.map.map.setOptions({
+    	zoomControl: false,
+    	streetViewControl: false,
+    	panControl: false,
+    });
+  };
+</script>
+
+<% end %>

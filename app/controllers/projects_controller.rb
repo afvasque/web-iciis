@@ -12,6 +12,11 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    #El primer investigador es el principal
+    @assitant_researchers = @project.researchers.order("id asc").offset(1).all
+
+    #Para mostrar los sitios de investigacion de cada proyecto
+    @json = @project.study_sites.to_gmaps4rails
   end
 
   # GET /projects/new
@@ -76,9 +81,14 @@ class ProjectsController < ApplicationController
       params.require(:project).permit(
         :id,
         :title,
+        :start_date, 
+        :end_date, 
+        :methodology, 
+        :publication, 
+        :summary,
         {:researchers_attributes => [:id, :name, :email, :_destroy]},
         {:study_sites_attributes => [:id, :start_date, :end_date, :data_collection_method, :name, :description, 
-          :latitude, :longitude, :location]}
+          :latitude, :longitude, :location, :_destroy]}
         )
     end
 
