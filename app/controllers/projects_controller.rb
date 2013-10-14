@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
+  autocomplete :researcher, :name
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-
 
 
   # GET /projects

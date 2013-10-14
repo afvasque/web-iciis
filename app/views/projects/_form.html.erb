@@ -28,7 +28,7 @@
           <div class="row">
             <div class="small-6 columns">
               <%= f.label :name %><br>
-              <%= f.text_field :name, :placeholder => "Nombre y Apellido del investigador" %>
+              <%= f.autocomplete_field :name, :autocomplete_researcher_name ,:placeholder => "Nombre y Apellido del investigador" %>
             </div>
 
             <div class="small-6 columns">
@@ -40,18 +40,20 @@
       <!-- Agregar otros INVESTIGADORES opcionalmente -->
       <h3> Otros investigadores </h3>
 
-      <%= f.fields_for @assitant_researchers do |f| %>
-          <div class="row">
-            <div class="small-6 columns">
-              <%= f.label :name %><br>
-              <%= f.text_field :name, :placeholder => "Nombre y Apellido del investigador" %>
-            </div>
+      <% if @assitant_researchers %>
+        <%= f.fields_for @assitant_researchers do |f| %>
+            <div class="row">
+              <div class="small-6 columns">
+                <%= f.label :name %><br>
+                <%= f.autocomplete_field :name, :autocomplete_researcher_name,:placeholder => "Nombre y Apellido del investigador" %>
+              </div>
 
-            <div class="small-6 columns">
-              <%= f.label :email %><br>
-              <%= f.text_field :email, :placeholder => "Correo electrónico del investigador" %>
+              <div class="small-6 columns">
+                <%= f.label :email %><br>
+                <%= f.text_field :email, :placeholder => "Correo electrónico del investigador" %>
+              </div>
             </div>
-          </div>
+        <% end %>
       <% end %>
 
 
