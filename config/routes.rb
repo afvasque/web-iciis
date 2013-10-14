@@ -1,7 +1,7 @@
 WebICIIS::Application.routes.draw do
-  resources :projects do
-    get :autocomplete_researcher_name, :on => :collection
-  end
+  #resources :projects do
+   # get :autocomplete_researcher_name, :on => :collection
+  #end
   
   resources :researchers
 

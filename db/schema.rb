@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131011015821) do
+ActiveRecord::Schema.define(version: 20131014182600) do
 
   create_table "projects", force: true do |t|
-    t.string   "title"
+    t.text     "title"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "start_date"
     t.date     "end_date"
-    t.string   "methodology"
-    t.string   "publication"
-    t.string   "summary"
+    t.text     "methodology"
+    t.text     "publication"
+    t.text     "summary"
   end
 
   create_table "projects_researchers", id: false, force: true do |t|
@@ -35,18 +35,18 @@ ActiveRecord::Schema.define(version: 20131011015821) do
   end
 
   create_table "researchers", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "website"
+    t.text     "name"
+    t.text     "email"
+    t.text     "website"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "study_sites", force: true do |t|
-    t.string   "name"
+    t.text     "name"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "location"
+    t.text     "location"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "gmaps"
