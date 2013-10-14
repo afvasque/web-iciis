@@ -3,7 +3,8 @@ class MappingController < ApplicationController
     @json = StudySite.distinct.to_gmaps4rails do |study_site, marker|
       marker.infowindow render_to_string(:partial => "/projects/infowindow", :locals => { :study_site => study_site, :projects => study_site.projects})
         marker.title "#{study_site.location}"
-        marker.json({ :sidebar => study_site.projects.first.title })
+        #Eventualmente cambiar por el nombre del proyecto
+        marker.json({ :sidebar => study_site.location })
         marker.picture({:width => 32,
                         :height => 32})
     end
