@@ -1,11 +1,15 @@
 <h1> Proyectos ICIIS PUC </h1>
 <div id="nav" class="dropSheet">
-	<ul id="markers_list">  </ul>
+	<ul id="markers_list">  
+    <% @markers.each do |m| %>
+      <%= link_to m.title, m %></br >
+    <% end %>
+  </ul>
 </div>
 <div id="map">
 	
-	<%= gmaps("markers" => {"data" => @json, "options" => {"list_container" => "markers_list", "do_clustering" => true, 
-		"randomize" => true, "map" => "TERRAIN" }}) %>
+	<%= gmaps("markers" => {"data" => @json, "options" => {"do_clustering" => true, 
+		"randomize" => true }}) %>
 
 </div>
 

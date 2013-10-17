@@ -13,5 +13,6 @@ class StudySite < ActiveRecord::Base
   		else
   			[self.latitude, self.longitude]
       end
-	end
+	 end
+   
 end
