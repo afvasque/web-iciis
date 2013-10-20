@@ -16,7 +16,6 @@
 //= require turbolinks
 //= require_tree .
 //= require cocoon
-//= require jquery.ui.all
 //= require autocomplete-rails
 
 $(document).foundation();

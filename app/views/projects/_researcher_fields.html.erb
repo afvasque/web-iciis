@@ -1,13 +1,11 @@
 <div class="nested-fields">
   <div class="row">
-    <div class="small-6 columns">
-      <%= f.label :name %><br>
-      <%= f.text_field :name, :placeholder => "Nombre y Apellido del investigador asistente" %>
+    <div class="small-6 columns">      
+      <%= f.input :name, :placeholder => "Nombre y Apellido del investigador asistente" %>
     </div>
 
     <div class="small-6 columns">
-      <%= f.label :email %><i>(opcional)</i><br>
-      <%= f.text_field :email, :placeholder => "Correo electrónico del investigador asistente" %>
+      <%= f.input :email, :placeholder => "Correo electrónico del investigador asistente", :required => false %>
     </div>
   </div>
 

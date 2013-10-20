@@ -22,8 +22,6 @@ class MappingController < ApplicationController
     "#{self.location}" 
   end
 
-  def gmaps4rails_sidebar
-   
-  end
+
 
 end
