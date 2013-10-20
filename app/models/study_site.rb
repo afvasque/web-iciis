@@ -18,7 +18,7 @@ class StudySite < ActiveRecord::Base
 
     def gmaps4rails_sidebar
       #Podrian agregarse mas proyectos por sitio de estudio
-      if self.projects[0] not nil
+      if self.projects[0]
        "<div class='sidebar_project'>
         #{self.projects[0].title} - #{self.location} <br /> 
         #{self.projects[0].researchers[0].name}
