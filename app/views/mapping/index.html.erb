@@ -1,21 +1,27 @@
-<h1> Proyectos ICIIS PUC </h1>
-<div id="nav" class="dropSheet">
-	<ul id="markers_list">  
-   <!--  <% @markers.each do |m| %>
-      <%= link_to m.title, m %></br >
-    <% end %> -->
-  </ul>
-</div>
-<div id="map">
-	
-	<%= gmaps("markers" => 
-    {"data" => @json, 
-      "options" => 
-      {"do_clustering" => true, 
-		  "randomize" => true,
-      "list_container" => "markers_list" }
-    }) %>
+<div class="small-4 columns no_padding">
+    <div id="nav" class="dropSheet">
+    	<ul id="markers_list">  
+      </ul>
+    </div>
+  </div>
 
+
+
+<div class="small-8 columns no_padding">
+
+  <div class="map_container_index">
+    
+    <%= gmaps(
+      "map_options" => { :container_class => "map_container_index" },
+      "markers" => 
+      {"data" => @json, 
+        "options" => 
+        {"do_clustering" => true, 
+        "randomize" => true,
+        "list_container" => "markers_list" }
+      }) %>
+
+  </div>
 </div>
 
 <% content_for :scripts do %>
@@ -24,9 +30,9 @@
 
   Gmaps.map.callback = function() {
     Gmaps.map.map.setOptions({
-    	zoomControl: false,
-    	streetViewControl: false,
-    	panControl: false,
+      zoomControl: false,
+      streetViewControl: false,
+      panControl: false,
     });
   };
 </script>

@@ -7,8 +7,10 @@ select
 }
 
 .map_container { height: 400px; }
+.map_container_index { height: 550px; }
 
 .map_container img{max-width: none;}
+.map_container_index img{max-width: none;}
 
 img,
 object,
@@ -22,3 +24,8 @@ h1.infowindow
 {
 	font-size: 90%
 }
+
+.row {
+	background-color: #FFF;
+	padding: 0 1em 0 1em;
+	}
