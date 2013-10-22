@@ -32,6 +32,16 @@
     <%= yield %>
     <%= yield :scripts %> 
     
+    <footer>
+
+        <% if signed_in? %>
+          <%= link_to "Sign out", signout_path, method: "delete" %>
+        <% else %>
+          <%= link_to "Login", :signin %>
+        <% end %>
+
+    </footer>
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>

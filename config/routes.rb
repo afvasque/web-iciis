@@ -1,4 +1,6 @@
 WebICIIS::Application.routes.draw do
+  resources :users
+
   #resources :projects do
    # get :autocomplete_researcher_name, :on => :collection
   #end
@@ -8,6 +10,10 @@ WebICIIS::Application.routes.draw do
   resources :study_sites
 
   resources :projects
+
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   get "mapping/index"
   # The priority is based upon order of creation: first created -> highest priority.
