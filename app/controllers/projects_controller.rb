@@ -77,7 +77,7 @@ class ProjectsController < ApplicationController
     def set_project
       @project = Project.find(params[:id])
       if @project.researchers.count > 1
-        @assitant_researchers = @project.researchers.order("id asc").offset(1).all
+        @assitant_researchers = @project.researchers.all.drop(1)
       end
     end
 
