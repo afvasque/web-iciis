@@ -76,8 +76,9 @@ class ProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
+      @main_researcher = @project.researchers.first
       if @project.researchers.count > 1
-        @assitant_researchers = @project.researchers.all.drop(1)
+        @assitant_researchers = @project.researchers.drop(1)
       end
     end
 

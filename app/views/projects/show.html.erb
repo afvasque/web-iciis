@@ -33,7 +33,7 @@
 		<div class="row ">
 			<div class="small-12 columns">
 				<h2 class="subheader">Investigador responsable</h2>
-		  		<%= @project.researchers.first.name %>
+		  		<%= @main_researcher.name %>
 			</div>
 		</div>
 
@@ -72,7 +72,7 @@
 
 		<div class="row">
 			<div class = "small-2 columns">
-				<%= button_to 'Volver al mapa', :root, :method => "GET", :class => "button secondary" %>
+				<%= button_to 'Volver al mapa', :root, :method => :get, :class => "button secondary" %>
 			</div>
 		</div>
 
