@@ -1,9 +1,9 @@
-<h1>Listing users</h1>
+<div class="row">
+<h1>Usuarios</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Login</th>
       <th>Email</th>
       <th>Role</th>
       <th></th>
@@ -15,18 +15,17 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.login %></td>
+
         <td><%= user.email %></td>
 
         <td><%= user.role_id %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', user %></td>
+        <td><%= link_to 'Editar', edit_user_path(user) %></td>
+        <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New User', new_user_path %>
+<%= button_to '+ Agregar usuario', new_user_path, :method => "GET", :class => "small button" %>
+</div>

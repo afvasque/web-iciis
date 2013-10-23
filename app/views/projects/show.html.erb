@@ -70,8 +70,11 @@
 		</div>
 
 
-		<%= link_to 'Edit', edit_project_path(@project) %> |
-		<%= link_to 'Back', projects_path %>
+		<div class="row">
+			<div class = "small-2 columns">
+				<%= button_to 'Volver al mapa', :root, :method => "GET", :class => "button secondary" %>
+			</div>
+		</div>
 
 	</div>
 </div>
