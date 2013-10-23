@@ -45,7 +45,7 @@ gem 'cocoon', '~> 1.2'
 
 gem 'jquery-ui-rails'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -59,3 +59,5 @@ gem 'jquery-ui-rails'
 group :production do
   gem 'rails_12factor'
 end
+
+gem "the_role", "~> 2.0.0"
