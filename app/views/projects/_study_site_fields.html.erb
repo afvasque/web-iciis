@@ -8,19 +8,11 @@
 
     <div class="row">
       <div class="large-12 columns">
-        <%= f.input :location, :placeholder => "Nombre de la localidad o zona administrativa." %>
+        <%= f.input :location, :placeholder => "Nombre de la localidad o zona administrativa.", 
+        input_html: {class: 'toLocate'} %>
       </div>
     </div>
 
-  <div class="row">
-    <div class="large-6 columns">
-      <%= f.input :latitude, :placeholder => "Coordenadas geográficas del sitio de estudio en formato decimal." %>
-    </div>
-
-    <div class="large-6 columns">
-      <%= f.input :longitude,  :placeholder => "Coordenadas geográficas del sitio de estudio en formato decimal." %>
-    </div>
-  </div>
 
   <div class="row">
       <div class="small-12 columns">

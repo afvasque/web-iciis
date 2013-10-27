@@ -17,6 +17,7 @@
 //= require cocoon
 //= require autocomplete-rails
 
+
 $(document).foundation();
 
 $(function(){ $(document).foundation(); });

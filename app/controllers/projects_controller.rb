@@ -24,6 +24,8 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @project.researchers.build
     @project.study_sites.build
+
+    @json = '[{"lng":"-70.6157","lat":"-33.4992"}]'
   end
 
   # GET /projects/1/edit

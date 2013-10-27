@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "gmaps4rails" %>
+
 <%= simple_form_for(@project) do |f| %>
 
   <% if @project.errors.any? %>
@@ -74,40 +76,42 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row study_sites">
     <div class="large-12 columns">
       <h2> Sitio de Estudio </h2>
 
 
   <%= f.fields_for :study_sites do |r| %>
+  <div class="row">
 
     <div class="row">
-      <div class="large-12 columns">
+      <div class="large-4 columns">
         <%= r.input :name, :placeholder => "Descripción del lugar, ej: 'Museo'." %>
       </div>
     </div>
 
     <div class="row">
-      <div class="large-12 columns">
-        <%= r.input :location, :placeholder => "Nombre de la localidad o zona administrativa." %>
+      <div class="large-4 columns">
+        <%= r.input :location, :placeholder => "Nombre de la localidad o zona administrativa.",  
+        input_html: {class: 'location0'}  %>
       </div>
     </div>
 
-  <div class="row">
-    <div class="large-6 columns">
-      <%= r.input :latitude, :placeholder => "Coordenadas geográficas del sitio de estudio en formato decimal." %>
-    </div>
 
+  <div class="map">
     <div class="large-6 columns">
-      <%= r.input :longitude,  :placeholder => "Coordenadas geográficas del sitio de estudio en formato decimal." %>
+    <%= gmaps(:markers => { :data => @json, :options => {:draggable => true} },
+          :map_options => { :auto_zoom => false, :zoom => 7}) %>
     </div>
+  </div>
+
   </div>
 
   <% end %>
 
   <!-- Agregar otros SITIOS DE INVESTIGACION opcionalmente -->
     <div id="links">
-          <%= link_to_add_association 'Agregar sitio de estudio', f, :study_sites, :class=>"tiny secondary button" %>
+          <%= link_to_add_association 'Agregar sitio de estudio', f, :study_sites, :class=>"tiny secondary button add_sitio_estudio" %>
     </div>
 
 
@@ -120,4 +124,63 @@
   </div>
 </div>
 
+<% content_for :scripts do %>
+<script type="text/javascript" charset="utf-8">
+
+Gmaps.map.HandleDragend = function(pos, elementName) {
+
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode({
+    latLng: pos
+  }, function(responses) {
+    if (responses && responses.length > 0) {
+       $(elementName).val(responses[0].formatted_address);
+    } else {
+    alert('No se puede determinar dirección en ese punto');
+    }
+  });
+};
+
+Gmaps.map.callback = function() {
+  //Ocurre solo para el primer pin
+  bindPin(0);
+  bindPinToTextbox(0);
+};
+
+function bindPin(i)
+{
+  google.maps.event.addListener(Gmaps.map.markers[i].serviceObject, 'dragend', function() { Gmaps.map.HandleDragend(this.getPosition(), ".location"+i) });  
+}
+
+// https://developers.google.com/maps/documentation/javascript/geocoding
+
+  var geocoder;
+  var marker;
+
+function bindPinToTextbox(i)
+{
+  $('.location' + i).bind('blur', function() {
+
+      var address = $('.location'+i).val();
+      geocoder = new google.maps.Geocoder();
+
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          
+          Gmaps.map.markers[i].serviceObject.setPosition(results[0].geometry.location)
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+    })
+  });
+}
+
+      
+</script>
 <% end %>
+
+
+<% end %>
+
+
+
