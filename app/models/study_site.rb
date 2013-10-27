@@ -1,7 +1,7 @@
 class StudySite < ActiveRecord::Base
 	has_and_belongs_to_many :projects
   validates_presence_of :location
-	acts_as_gmappable :lat => 'latitude', :lng => 'longitude', :check_process => true, :checker => "gmaps"
+	acts_as_gmappable :check_process => false
 	
 	#  RETURNS LATLONG AS NEEDED FOR GMAPS API
   	def latlong
@@ -9,11 +9,7 @@ class StudySite < ActiveRecord::Base
   	end
 
   	def gmaps4rails_address
-  		if self.latitude.blank? or self.longitude.blank?
-  			self.location
-  		else
-  			[self.latitude, self.longitude]
-      end
+  		self.location
 	 end
 
     def gmaps4rails_sidebar
