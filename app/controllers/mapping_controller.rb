@@ -1,11 +1,15 @@
 class MappingController < ApplicationController
   def index	
-    @markers = []
-    @json = StudySite.distinct.to_gmaps4rails do |study_site, marker|
-      
+    @projects = []
+    @markers = Hash.new
+    @json = StudySite.all.to_gmaps4rails do |study_site, marker|
+
+      @markers[study_site.id] = marker
+
       study_site.projects.each do |p|
-        if not @markers.include?(p)
-          @markers << p
+        if not @projects.include?(p)
+          @projects << p
+
         end
       end
       
@@ -14,6 +18,8 @@ class MappingController < ApplicationController
         marker.title "#{study_site.location}"
         marker.picture({:width => 32,
                         :height => 32})
+        #Id para despues abrir infowindow desde el menu acordeon
+        marker.json({ :id => study_site.id })
     end
   end
 

@@ -1,10 +1,21 @@
 <div class="row full-width">
 
 <div class="small-4 columns no_padding">
-    <div id="nav" class="dropSheet">
-    	<ul id="markers_list">  
-      </ul>
-    </div>
+
+<div class="section-container accordion" data-section="accordion" data-options="callback:function(){}; one_up: false; multi_expand: false">
+  
+  <% @projects.each do |m| %>
+    <section class="section">
+      <p class="title" data-section-title><a href="#"><%= m.title %></a></p>
+      <div class="content" data-section-content>
+        <% m.study_sites.each do |s| %>
+          <p><%= link_to s.location, "#", :class=>"locationLink", :id => s.id %></p>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+</div>
+
 </div>
 
 
@@ -18,8 +29,7 @@
       {"data" => @json, 
         "options" => 
         {"do_clustering" => true, 
-        "randomize" => true,
-        "list_container" => "markers_list" }
+        "randomize" => true }
       }) %>
 
   </div>
@@ -40,7 +50,26 @@
       streetViewControl: false,
       panControl: false,
     });
+
+    $(".locationLink").on("click", function(e){
+      var marker_id = $(this).attr("id");
+      var actual_id;
+      //Obtener id real del marker a partir del atributo json agregado en el controlador
+      //Fuente http://stackoverflow.com/questions/15051368/gmaps4rails-selecting-marker-by-id
+      for(var i = 0; i < Gmaps.map.markers.length; i++)
+      {
+        if(Gmaps.map.markers[i].id == marker_id)
+        {
+            actual_id = i;
+            break;
+        }
+      }
+      google.maps.event.trigger(Gmaps.map.markers[actual_id].serviceObject, 'click');
+      e.preventDefault();
+    });
+
   };
+
 </script>
 
 <% end %>

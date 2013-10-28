@@ -16,7 +16,7 @@ class StudySite < ActiveRecord::Base
       #Podrian agregarse mas proyectos por sitio de estudio
       if self.projects[0]
        "<div class='sidebar_project'>
-        <div id='sidebar_title'>
+        <div id='sidebar_title' data-dropdown='drop1'>
           #{self.projects[0].title} - #{self.location} <br />
         </div>
         #{self.projects[0].researchers[0].name}
