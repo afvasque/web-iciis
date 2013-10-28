@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   autocomplete :researcher, :name
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :registered_user, only: [:edit, :new]
 
 
   # GET /projects
@@ -101,5 +102,8 @@ class ProjectsController < ApplicationController
         )
     end
 
-  
+    def registered_user
+      redirect_to(signin_path) unless signed_in?
+    end
+
 end

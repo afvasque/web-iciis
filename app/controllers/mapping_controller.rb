@@ -1,4 +1,5 @@
 class MappingController < ApplicationController
+
   def index	
     @projects = []
     @markers = Hash.new
@@ -28,6 +29,15 @@ class MappingController < ApplicationController
     "#{self.location}" 
   end
 
+  private
+
+      def admin_user
+      redirect_to(signin_path) unless signed_in?
+      # TheRole 1 es admin
+      if signed_in?
+        redirect_to(root_url) unless current_user.role_id == 1
+      end
+    end
 
 
 end

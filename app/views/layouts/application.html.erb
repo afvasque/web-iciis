@@ -38,8 +38,13 @@
           <%= link_to "Sign out", signout_path, method: "delete" %> 
           
           <div class="pull-right"> 
-            <%= link_to "Gestión de Proyectos", :projects %> |
-            <%= link_to "Gestión de Usuarios", :users %> 
+            <%= link_to "Gestión de Proyectos", :projects %> 
+            <!-- si es admin -->
+            <% if current_user.role_id == 1 %>
+              |
+            <%= link_to "Gestión de Usuarios", :users %>
+            <% end %> 
+            
           </div>         
 
         <% else %>

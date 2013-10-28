@@ -1,5 +1,6 @@
 class StudySitesController < ApplicationController
   before_action :set_study_site, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:index, :show, :edit, :new, :update]
 
   # GET /study_sites
   # GET /study_sites.json
@@ -70,5 +71,13 @@ class StudySitesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def study_site_params
       params.require(:study_site).permit(:start_date, :end_date, :data_collection_method, :name, :description, :latitude, :longitude, :location)
+    end
+
+    def admin_user
+      redirect_to(signin_path) unless signed_in?
+      # TheRole 1 es admin
+      if signed_in?
+        redirect_to(root_url) unless current_user.role_id == 1
+      end
     end
 end

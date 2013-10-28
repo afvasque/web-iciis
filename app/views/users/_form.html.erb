@@ -12,7 +12,9 @@
     <div class="row">
       <%= f.input :password_confirmation %>
     </div>
-
+    <div class="row">
+      <%= f.input :role_id, collection: 1..2 %>
+    </div>
   </div>
   <div class="row">
     <div class="form-actions">

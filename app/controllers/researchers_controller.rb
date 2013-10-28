@@ -1,5 +1,6 @@
 class ResearchersController < ApplicationController
   before_action :set_researcher, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:index, :show, :edit, :new, :update]
 
   # GET /researchers
   # GET /researchers.json
@@ -70,5 +71,13 @@ class ResearchersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def researcher_params
       params.require(:researcher).permit(:name, :email, :website)
+    end
+
+    def admin_user
+      redirect_to(signin_path) unless signed_in?
+      # TheRole 1 es admin
+      if signed_in?
+        redirect_to(root_url) unless current_user.role_id == 1
+      end
     end
 end
