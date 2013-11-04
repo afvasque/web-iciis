@@ -1,5 +1,5 @@
 <% projects.each do |p| %>
 	<h1 class="infowindow"> <%= p.title %> </h1>
-	<p>Investigador responsable: <%= p.researchers[0].name %> </p>
+	<p>Investigador responsable: <%= p.researchers[0].name  if p.researchers[0] %> </p>
 	<p><%=link_to "Ver detalles", p, 'data-no-turbolink' => true%></p>
 <% end %>

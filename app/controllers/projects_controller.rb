@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-  autocomplete :researcher, :name
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :registered_user, only: [:edit, :new]
 
@@ -26,24 +25,33 @@ class ProjectsController < ApplicationController
     @project.researchers.build
     @project.study_sites.build
 
-    @json = '[{"lng":"-70.6157","lat":"-33.4992"}]'
+    set_init_params
+
   end
 
   # GET /projects/1/edit
   def edit
+    @researchers = Researcher.all
     @json = @project.study_sites.to_gmaps4rails
   end
 
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+
+    @project = Project.new(project_params.except(:researchers_attributes))
+
+    project_params[:researchers_attributes].each do |k,v|
+      @project.researchers << Researcher.find(v['id'])
+    end
+
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to @project, notice: 'Los datos fueron actualizados correctamente' }
         format.json { render action: 'show', status: :created, location: @project }
       else
+        set_init_params
         format.html { render action: 'new' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
@@ -58,6 +66,7 @@ class ProjectsController < ApplicationController
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
+        set_init_params
         format.html { render action: 'edit' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
@@ -81,6 +90,9 @@ class ProjectsController < ApplicationController
     def set_project
       @project = Project.find(params[:id])
       @main_researcher = @project.researchers.first
+
+      @researchers = Researcher.all
+
       if @project.researchers.count > 1
         @assitant_researchers = @project.researchers.drop(1)
       end
@@ -96,7 +108,7 @@ class ProjectsController < ApplicationController
         :methodology, 
         :publication, 
         :summary,
-        {:researchers_attributes => [:id, :name, :email, :_destroy]},
+        {:researchers_attributes => [:id, :_destroy]},
         {:study_sites_attributes => [:id, :start_date, :end_date, :data_collection_method, :name, :description, 
           :latitude, :longitude, :location, :gmaps, :_destroy]}
         )
@@ -104,6 +116,14 @@ class ProjectsController < ApplicationController
 
     def registered_user
       redirect_to(signin_path) unless signed_in?
+    end
+
+    def set_init_params
+      # Para renderear el select correctamente
+      @researchers = Researcher.all unless params[:researchers]
+    
+      # Para que no se caiga gmaps, requiere un JSON con latlong
+      @json = '[{"lng":"-70.6157","lat":"-33.4992"}]' unless params[:location]
     end
 
 end

@@ -21,31 +21,43 @@
       <h2> Investigador responsable </h2>
 
         <% first = true %>
-        <%= f.fields_for :researchers do |f| %>
+        <% researcher_id = 0 %>
+
+        <%= f.simple_fields_for :researchers do |f| %>
 
              <div class="row">
-              <div class="small-6 columns">
-                <%= f.input :name, :placeholder => "Nombre y Apellido del investigador" %>
+              <div class="small-12 columns">
+                <%= f.input :id, 
+                collection: @researchers, 
+                selected: @project.researchers[researcher_id].id, 
+                value_method: :id, 
+                label_method: :name %>
               </div>
 
-              <div class="small-6 columns">
-                <%= f.input :email, :placeholder => "Correo electrónico del investigador" %>
+              <div class="row">
+                <div class="small-12 columns">
+                  <%= link_to 'Ingresar nuevo investigador', "" , "data-reveal-id" => "myModal" %>
+                </div>
               </div>
-            </div>
 
+            <% researcher_id = researcher_id+1 %>
+            
             <% if first %>
               <h3> Otros investigadores </h3>
               <% first = false %>
             <% end %>
+
         <% end %>
 
       <!-- Agregar otros INVESTIGADORES opcionalmente -->          
 
-      <div id="links">
-        <%= link_to_add_association 'Agregar investigador asistente', f, :researchers, :class=>"tiny secondary button" %>
+    </div>
+      <div class="row">
+        <div id="links" class="small-12 columns">
+          <%= link_to_add_association 'Agregar investigador', f, :researchers, :class=>"tiny secondary button" %>
+        </div>
       </div>
 
-    </div>
   </div>
   
   <div class="row">
@@ -120,9 +132,13 @@
   </div>
 
 <div class="row">
-  <div class="small-9 columns">
+  <div class="small-6 columns">
       <%= f.button :submit, "Aceptar", :class=>"button radius" %>
   </div>
+  <div class="small-6 columns">
+      <%= link_to 'Volver al mapa', :root, :class => "button secondary" %>
+  </div>
+
 </div>
 
 <% content_for :scripts do %>
@@ -183,8 +199,13 @@ function bindPinToTextbox(i)
 </script>
 <% end %>
 
-
 <% end %>
 
+
+<div id="myModal" class="reveal-modal small">
+  <h1> Agregar investigador </h1>
+  <%= render "researchers/form", :@researcher => Researcher.new %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
 
 

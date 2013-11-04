@@ -34,3 +34,11 @@ $('.add_sitio_estudio').on('click', function(){
     Gmaps.map.markers[insertedItem[0].id].serviceObject.setMap(null);
   });
 
+ $('#new_researcher').on('ajax:success', function() {
+
+    $('select[id^="project_researchers"]').append('<option value='+ arguments[1].id + '>' + arguments[1].name + '</option>');
+
+    $('#myModal').foundation('reveal', 'close');
+    
+})
+
