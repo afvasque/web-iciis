@@ -1,6 +1,9 @@
 class Project < ActiveRecord::Base
 	has_and_belongs_to_many :researchers
+	belongs_to :researcher #investigador principal
+	
 	accepts_nested_attributes_for :researchers
+
 	validate :require_one_researcher, :require_one_study_site
 	has_and_belongs_to_many :study_sites
 	accepts_nested_attributes_for :study_sites

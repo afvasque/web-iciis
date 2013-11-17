@@ -9,52 +9,59 @@
       </div>
   <% end %>
 
+  
   <div class="row ">
     <div class="small-12 columns">
       <%= f.input :title, :placeholder=>"Título que identifique el proyecto de investigación" %>
     </div>
   </div>
 
+
   <div class="row">
     <div class="large-12 columns">
 
       <h2> Investigador responsable </h2>
 
-        <% first = true %>
-        <% researcher_id = 0 %>
+      <%= f.simple_fields_for :researcher do |r| %>
+       <div class="row">
+        <div class="small-12 columns">
+          <%= r.input :id, 
+          collection: @researchers,
+          selected: @project.researcher, 
+          value_method: :id, 
+          label_method: :name,
+          label: "Nombre investigador" %>
+        </div>
+      </div>
+      <% end %>
 
-        <%= f.simple_fields_for :researchers do |f| %>
 
-             <div class="row">
-              <div class="small-12 columns">
-                <%= f.input :id, 
-                collection: @researchers, 
-                selected: @project.researchers[researcher_id].id, 
-                value_method: :id, 
-                label_method: :name %>
-              </div>
+        <h3> Otros investigadores </h3>
 
-              <div class="row">
-                <div class="small-12 columns">
-                  <%= link_to 'Ingresar nuevo investigador', "" , "data-reveal-id" => "myModal" %>
-                </div>
-              </div>
+      <%= f.simple_fields_for :researchers do |r| %>
+       <div class="row">
+        <div class="small-12 columns">
+          <%= r.input :id, 
+          collection: @researchers,
+          value_method: :id, 
+          label_method: :name,
+          label: "Nombre investigador" %>
+        </div>
+      </div>
+      <% end %>
 
-            <% researcher_id = researcher_id+1 %>
-            
-            <% if first %>
-              <h3> Otros investigadores </h3>
-              <% first = false %>
-            <% end %>
-
-        <% end %>
-
+ 
       <!-- Agregar otros INVESTIGADORES opcionalmente -->          
 
-    </div>
       <div class="row">
         <div id="links" class="small-12 columns">
           <%= link_to_add_association 'Agregar investigador', f, :researchers, :class=>"tiny secondary button" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <%= link_to 'Ingresar nuevo investigador', "" , "data-reveal-id" => "myModal" %>
         </div>
       </div>
 

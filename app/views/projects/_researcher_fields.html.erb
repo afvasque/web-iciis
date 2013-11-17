@@ -1,20 +1,22 @@
 <div class="nested-fields">
   <div class="row">
-    <div class="small-12 columns">      
+    <div class="small-3 columns">      
        <%= f.input :id, 
                 collection: @researchers, 
                 value_method: :id, 
-                label_method: :name %>
+                label_method: :name,
+                label: "Nombre investigador" %>
     </div>
 
-      <div class="small-12 columns">
-        <%= link_to_remove_association "Eliminar investigador asistente", f, :class=>"tiny alert button"%>
+      <div class="small-9 columns">
+        <%= link_to_remove_association "Eliminar investigador", f, :class=>"tiny alert button" %>
       </div>
 
-      <div class="small-12 columns">
-        <%= link_to 'Ingresar nuevo investigador', "" , "data-reveal-id" => "myModal" %>
-      </div>
+  </div>
 
+    <div class="small-12 columns">
+      <%= link_to 'Ingresar nuevo investigador', "" , "data-reveal-id" => "myModal" %>
     </div>
+
 
 </div>

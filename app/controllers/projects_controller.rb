@@ -13,16 +13,17 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     #El primer investigador es el principal
-    @assitant_researchers = @project.researchers.order("id asc").offset(1).all
+    @assitant_researchers = @project.researchers
 
     #Para mostrar los sitios de investigacion de cada proyecto
     @json = @project.study_sites.to_gmaps4rails
+
   end
 
   # GET /projects/new
   def new
     @project = Project.new
-    @project.researchers.build
+    @project.researcher
     @project.study_sites.build
 
     set_init_params
@@ -39,8 +40,10 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
 
-    @project = Project.new(project_params.except(:researchers_attributes))
+    @project = Project.new(project_params.except(:researchers_attributes, :researcher))
 
+    @project.researcher = Researcher.find(project_params[:researcher]['id'])
+    
     project_params[:researchers_attributes].each do |k,v|
       @project.researchers << Researcher.find(v['id'])
     end
@@ -61,8 +64,27 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
+
+    @project.update(project_params.except(:researchers_attributes, :researcher, :study_sites_attributes))
+    
+    @project.researcher = Researcher.find(project_params[:researcher]['id'])
+    
+    project_params[:researchers_attributes].each do |k,v|
+      r = Researcher.find(v['id'])
+      if not @project.researchers.include? r
+        @project.researchers << r
+      end
+    end
+
+    project_params[:study_sites_attributes].each do |k,v|
+      r = StudySite.find(v['id'])
+      if not @project.study_sites.include? r
+        @project.study_sites << r
+      end
+    end
+
     respond_to do |format|
-      if @project.update(project_params)
+      if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
@@ -89,12 +111,12 @@ class ProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
-      @main_researcher = @project.researchers.first
+      @main_researcher = @project.researcher
 
       @researchers = Researcher.all
 
       if @project.researchers.count > 1
-        @assitant_researchers = @project.researchers.drop(1)
+        @assitant_researchers = @project.researchers
       end
     end
 
@@ -108,6 +130,8 @@ class ProjectsController < ApplicationController
         :methodology, 
         :publication, 
         :summary,
+        {:researcher => [:id, :_destroy]},
+        {:researcher_attributes => [:id, :_destroy]},
         {:researchers_attributes => [:id, :_destroy]},
         {:study_sites_attributes => [:id, :start_date, :end_date, :data_collection_method, :name, :description, 
           :latitude, :longitude, :location, :gmaps, :_destroy]}
