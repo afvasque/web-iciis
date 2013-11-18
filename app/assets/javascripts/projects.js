@@ -36,7 +36,7 @@ $('.add_sitio_estudio').on('click', function(){
 
  $('#new_researcher').on('ajax:success', function() {
 
-    $('select[id^="project_researchers"]').append('<option value='+ arguments[1].id + '>' + arguments[1].name + '</option>');
+    $('select[id^="project_researcher"]').append('<option value='+ arguments[1].id + '>' + arguments[1].name + '</option>');
 
     $('#myModal').foundation('reveal', 'close');
     

@@ -41,7 +41,7 @@
       <%= f.simple_fields_for :researchers do |r| %>
       <div class="nested-fields">
        <div class="row">
-        <div class="small-5 columns">
+        <div class="small-4 columns">
           <%= r.input :id, 
           collection: @researchers,
           value_method: :id, 
@@ -49,14 +49,14 @@
           label: "Nombre investigador" %>
         </div>
 
-        <div class="small-7 columns">
-          <%= link_to_remove_association "Eliminar investigador", r, :class=>"tiny alert button" %>
+        <div class="small-8 columns">
+          <%= link_to_remove_association "Eliminar investigador", r %>
         </div>
 
         </div>
       </div>
-      <% end %>
       </div>
+      <% end %>
 
  
       <!-- Agregar otros INVESTIGADORES opcionalmente -->          

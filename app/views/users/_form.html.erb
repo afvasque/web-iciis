@@ -13,7 +13,10 @@
       <%= f.input :password_confirmation %>
     </div>
     <div class="row">
-      <%= f.input :role_id, collection: 1..2 %>
+      <%= f.input :role_id, 
+      :collection => [[1, "Administrador"], [2,"Editor"]],
+      :label_method => :last, :value_method => :first,
+      :include_blank => "Elegir rol" %>
     </div>
   </div>
   <div class="row">
