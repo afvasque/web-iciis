@@ -71,8 +71,13 @@ class ProjectsController < ApplicationController
     
     project_params[:researchers_attributes].each do |k,v|
       r = Researcher.find(v['id'])
+      #agregar los nuevos
       if not @project.researchers.include? r
         @project.researchers << r
+      end
+      #eliminar los antiguos
+      if v['_destroy'] == '1'
+        @project.researchers.delete(r)
       end
     end
 
@@ -115,9 +120,8 @@ class ProjectsController < ApplicationController
 
       @researchers = Researcher.all
 
-      if @project.researchers.count > 1
-        @assitant_researchers = @project.researchers
-      end
+      @assitant_researchers = @project.researchers unless @project.researchers.empty?
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

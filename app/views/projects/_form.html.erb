@@ -22,6 +22,7 @@
 
       <h2> Investigador responsable </h2>
 
+
       <%= f.simple_fields_for :researcher do |r| %>
        <div class="row">
         <div class="small-12 columns">
@@ -35,20 +36,27 @@
       </div>
       <% end %>
 
-
         <h3> Otros investigadores </h3>
 
       <%= f.simple_fields_for :researchers do |r| %>
+      <div class="nested-fields">
        <div class="row">
-        <div class="small-12 columns">
+        <div class="small-5 columns">
           <%= r.input :id, 
           collection: @researchers,
           value_method: :id, 
           label_method: :name,
           label: "Nombre investigador" %>
         </div>
+
+        <div class="small-7 columns">
+          <%= link_to_remove_association "Eliminar investigador", r, :class=>"tiny alert button" %>
+        </div>
+
+        </div>
       </div>
       <% end %>
+      </div>
 
  
       <!-- Agregar otros INVESTIGADORES opcionalmente -->          

@@ -1,6 +1,6 @@
 <div class="nested-fields">
   <div class="row">
-    <div class="small-3 columns">      
+    <div class="small-5 columns">      
        <%= f.input :id, 
                 collection: @researchers, 
                 value_method: :id, 
@@ -8,9 +8,9 @@
                 label: "Nombre investigador" %>
     </div>
 
-      <div class="small-9 columns">
-        <%= link_to_remove_association "Eliminar investigador", f, :class=>"tiny alert button" %>
-      </div>
+    <div class="small-7 columns">
+      <%= link_to_remove_association "Eliminar investigador", f, :class=>"tiny alert button" %>
+    </div>
 
   </div>
 

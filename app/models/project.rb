@@ -15,7 +15,7 @@ class Project < ActiveRecord::Base
 
 	private
 	    def require_one_researcher
-	      errors.add(:base, "Debe haber al menos un investigador responsable") if self.researchers.size < 1
+	      errors.add(:base, "Debe haber al menos un investigador responsable") if self.researcher.nil?
 	    end
 
 	    def require_one_study_site
