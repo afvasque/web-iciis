@@ -17,7 +17,6 @@
   	<title><%= content_for?(:title) ? yield(:title) : "Proyectos ICIIS" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -28,11 +27,13 @@
     <h1 class="header"><%= link_to image_tag("icuc.png"), :root %> </h1>
   </div> 
 
+  <div class="wrapper">
     <%= yield %>
-    <%= yield :scripts %> 
+    <%= yield :scripts %>
+  <div class="push"></div> 
 
     
-    <footer>
+    <div class="footer">
 
         <% if signed_in? %>
           <%= link_to "Sign out", signout_path, method: "delete" %> 
@@ -51,7 +52,7 @@
           <%= link_to "Login", :signin %>
         <% end %>
 
-    </footer>
+    </div>
 
     <%= javascript_include_tag "application" %>
   </body>

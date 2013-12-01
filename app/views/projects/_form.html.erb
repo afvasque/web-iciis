@@ -217,7 +217,7 @@ function bindPinToTextbox(i)
 <% end %>
 
 
-<div id="myModal" class="reveal-modal small">
+<div id="myModal" class="reveal-modal small" data-reveal>
   <h1> Agregar investigador </h1>
   <%= render "researchers/form", :@researcher => Researcher.new %>
   <a class="close-reveal-modal">&#215;</a>

@@ -2,19 +2,20 @@
 
 <div class="small-4 columns no_padding">
 
-<div class="section-container accordion" data-section="accordion" data-options="callback:function(){}; one_up: false; multi_expand: false">
+<dl class="accordion" data-accordion>
   
   <% @projects.each do |m| %>
-    <section class="section">
-      <p class="title" data-section-title><a href="#"><%= m.title %></a></p>
-      <div class="content" data-section-content>
+  <dd>
+    <a href="#panel1"><%= m.title %></a>
+    <div id="panel1" class="content">
         <% m.study_sites.each do |s| %>
           <p><%= link_to s.location, "#", :class=>"locationLink", :id => s.id %></p>
         <% end %>
-      </div>
-    </section>
+    </div>
+  </dd>
   <% end %>
-</div>
+
+</dl>
 
 </div>
 

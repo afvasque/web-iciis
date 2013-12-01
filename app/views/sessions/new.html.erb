@@ -1,25 +1,30 @@
 <% provide(:title, "Sign in") %>
 
-
-
 <div class="row">
-<h1>Usuarios registrados</h1>
-  <div class="small-6 columns offset3">
-    <%= simple_form_for(:session, url: sessions_path) do |f| %>
+	 <div class="large-12 columns">
+		<h1>Usuarios registrados</h1>
+	</div>
 
-      <%= f.input :email %>
-      <%= f.input :password %>
+	<div class="row">
+		<div class="small-12 columns">
+			<% flash.each do |name, msg| -%>
+				<div class="alert-box alert">
+					<%= content_tag :div, msg, class: name %>
+				</div>
+			<% end %>
+		</div>
+	</div>
 
-      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-    <% end %>
+	<div class="row">
+	  	<div class="small-6 columns offset3">
+		    <%= simple_form_for(:session, url: sessions_path) do |f| %>
 
-  </div>
-</div>
+		      <%= f.input :email %>
+		      <%= f.input :password %>
 
-<div class="row">
-<% flash.each do |name, msg| -%>
-<div class="alert-box alert">
-	<%= content_tag :div, msg, class: name %>
-</div>
-<% end -%>
+		      <%= f.submit "Ingresar", class: "btn btn-large btn-primary" %>
+		    <% end %>
+			</div>
+	</div>
+
 </div>
