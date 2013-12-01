@@ -18,7 +18,7 @@
 
 
   <div class="row">
-    <div class="large-12 columns">
+    <div class="large-6 columns">
 
       <h2> Investigador responsable </h2>
 
@@ -36,70 +36,70 @@
       </div>
       <% end %>
 
-        <h3> Otros investigadores </h3>
+  </div>
+
+  <div class="large-6 columns">
+
+      <h2> Otros investigadores </h2>
 
       <%= f.simple_fields_for :researchers do |r| %>
       <div class="nested-fields">
-       <div class="row">
-        <div class="small-4 columns">
-          <%= r.input :id, 
-          collection: @researchers,
-          value_method: :id, 
-          label_method: :name,
-          label: "Nombre investigador" %>
-        </div>
-
-        <div class="small-8 columns">
-          <%= link_to_remove_association "Eliminar investigador", r %>
-        </div>
-
+        <div class="row">
+          <div class="small-4 columns">
+            <%= r.input :id, 
+            collection: @researchers,
+            value_method: :id, 
+            label_method: :name,
+            label: "Nombre investigador" %>
+          </div>
         </div>
       </div>
+      
+      <div class="small-12 columns">
+        <%= link_to_remove_association "Eliminar investigador", r %>
       </div>
       <% end %>
 
- 
-      <!-- Agregar otros INVESTIGADORES opcionalmente -->          
-
-      <div class="row">
-        <div id="links" class="small-12 columns">
-          <%= link_to_add_association 'Agregar investigador', f, :researchers, :class=>"tiny secondary button" %>
-        </div>
+                <div id="links" class="large-6 columns">
+          <%= link_to_add_association 'Agregar investigador', f, :researchers %>
       </div>
 
-      <div class="row">
-        <div class="small-12 columns">
-          <%= link_to 'Ingresar nuevo investigador', "" , "data-reveal-id" => "myModal" %>
-        </div>
-      </div>
+  </div>
+  </div>
+
+  <div class="row">
+    <!-- Agregar otros INVESTIGADORES opcionalmente -->
+
+    <div class="large-6 columns">
+      <%= link_to 'Ingresar nuevo investigador', "" , "data-reveal-id" => "myModal" %>
+    </div>
 
   </div>
   
   <div class="row">
     <div class="large-12 columns">
+    <h2> Detalles del proyecto </h2>
       <%= f.input :summary, :placeholder=>"Breve descripción del proyecto" %>
     </div>
   </div>
 
 <div class="row">
-    <div class="large-12 columns">
+    <div class="large-6 columns">
       <%= f.input :methodology, :placeholder=>"Descripción de la metodología usada en el proyecto. Incluir enfoque metodologíco e instrumentos." %>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="large-12 columns">
+    <div class="large-6 columns">
       <%= f.input :publication, :placeholder => "Resultados y publicaciones que se han producido en el proyecto (articulos de revistas, libros, presentaciones en congresos, otros)." %>
     </div>
   </div>
 
   <div class="row">
       <div class="large-6 columns">
-        <%= f.input :start_date,{:html => "width:auto;"} %>
+        <%= f.input :start_date, :start_year => Date.today.year - 90 %>
       </div>
 
       <div class="large-6 columns">
-        <%= f.input :end_date %>
+        <%= f.input :end_date, :start_year => Date.today.year - 90 %>
     </div>
   </div>
 
@@ -133,17 +133,18 @@
 
     <% marker = marker+1 %>
 
-
-
   <% end %>
 
-  <!-- Agregar otros SITIOS DE INVESTIGACION opcionalmente -->
-    <div id="links">
-          <%= link_to_add_association 'Agregar sitio de estudio', f, :study_sites, :class=>"tiny secondary button add_sitio_estudio" %>
-    </div>
+  </div>
 
+  <div class="row">
 
-    </div>
+      <!-- Agregar otros SITIOS DE INVESTIGACION opcionalmente -->
+  <div id="links" class="large-12 columns">
+        <%= link_to_add_association 'Agregar sitio de estudio', f, :study_sites %>
+  </div>
+  </div>
+
   </div>
 
 <div class="row">

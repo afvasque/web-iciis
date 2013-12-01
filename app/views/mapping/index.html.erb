@@ -1,7 +1,19 @@
 <div class="row full-width">
-
-<div class="small-4 columns no_padding">
-
+<div class="large-4 columns no_padding">
+<br />
+<div class="row collapse">
+<div class="small-10 columns">
+  <%= form_tag search_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Buscar proyectos" %>
+</div>
+    <div class="small-2 columns">
+      <%=submit_tag "Go", :class => "button postfix" %>
+    </div>
+  <% end %>
+  <% if @mapped %>
+    <%= link_to "Ver todos", :root %>
+  <% end %>
+</div>
 <dl class="accordion" data-accordion>
   
   <% @projects.each do |m| %>
@@ -20,7 +32,7 @@
 </div>
 
 
-<div class="small-8 columns no_padding">
+<div class="large-8 columns no_padding">
 
   <div class="map_container_index">
     

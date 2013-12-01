@@ -11,7 +11,10 @@ class Project < ActiveRecord::Base
 	validate :word_count_summary
 	validates_presence_of :title, :summary, :methodology
 
-
+	def self.search(search)
+		projects = []
+		projects << Project.first
+	end
 
 	private
 	    def require_one_researcher

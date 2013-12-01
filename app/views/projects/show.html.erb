@@ -19,28 +19,25 @@
 
 		<div class="row">
 			<div class="small-12 columns">
+				<%= render 'study_sites_map' %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="small-12 columns">
 				<h2 class="subheader"> Descripción del proyecto </h2>
 					<p> <%= @project.summary %> </p>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="small-12 columns">
-				<%= render 'study_sites_map' %>
-			</div>
-		</div>
-
 		<div class="row ">
-			<div class="small-12 columns">
+			<div class="small-6 columns">
 				<h2 class="subheader">Investigador responsable</h2>
 		  		<%= @main_researcher.name %>
 			</div>
-		</div>
-
-		<div class="row">
 			<% if @assitant_researchers %>
-				<div class="small-12 columns">
-					<h3 class="subheader">Otros investigadores</h3>
+				<div class="small-6 columns">
+					<h2 class="subheader">Otros investigadores</h3>
 					<ul>
 						<% @assitant_researchers.each do |a| %>
 								<li><%= a.name %>
@@ -52,14 +49,12 @@
 
 
 		<div class="row">
-			<div class="small-12 columns">
+			<div class="small-6 columns">
 				<h2 class="subheader"> Metodología </h2>
 					<p> <%= @project.methodology %> </p>
 			</div>
-		</div>
 
-		<div class="row ">
-			<div class="small-12 columns">
+			<div class="small-6 columns">
 				<h2 class="subheader">Publicaciones</h2>
 			  	<% if @project_publication %>
 			  		<p> <%= @project.publication %> </p>

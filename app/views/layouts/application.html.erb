@@ -33,26 +33,26 @@
   <div class="push"></div> 
 
     
-    <div class="footer">
+  <div class="footer">
 
-        <% if signed_in? %>
-          <%= link_to "Sign out", signout_path, method: "delete" %> 
+      <% if signed_in? %>
+        <%= link_to "Sign out", signout_path, method: "delete" %> 
+        
+        <div class="pull-right"> 
+          <%= link_to "Gestión de Proyectos", :projects %> 
+          <!-- si es admin -->
+          <% if current_user.role_id == 1 %>
+            |
+          <%= link_to "Gestión de Usuarios", :users %>
+          <% end %> 
           
-          <div class="pull-right"> 
-            <%= link_to "Gestión de Proyectos", :projects %> 
-            <!-- si es admin -->
-            <% if current_user.role_id == 1 %>
-              |
-            <%= link_to "Gestión de Usuarios", :users %>
-            <% end %> 
-            
-          </div>         
+        </div>         
 
-        <% else %>
-          <%= link_to "Login", :signin %>
-        <% end %>
+      <% else %>
+        <%= link_to "Login", :signin %>
+      <% end %>
 
-    </div>
+  </div>
 
     <%= javascript_include_tag "application" %>
   </body>
