@@ -2,6 +2,10 @@ class StudySite < ActiveRecord::Base
 	has_and_belongs_to_many :projects
   validates_presence_of :location
 	acts_as_gmappable :check_process => false
+
+  def self.search(search)
+        ss = StudySite.where('name LIKE ? OR location LIKE ?', "%#{search}%","%#{search}%").all
+  end
 	
 	#  RETURNS LATLONG AS NEEDED FOR GMAPS API
   	def latlong
