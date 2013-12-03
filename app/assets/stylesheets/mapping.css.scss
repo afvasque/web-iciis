@@ -5,17 +5,28 @@
     
     html, body {
     height: 100%;
+    margin:0;
     }
     
     .wrapper {
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -1.5em;
+    margin: 0 auto -20px;
     }
 
     .footer, .push {
-    height: 1.5em;
+    height: 20px;
+
+    }
+
+    .push
+    {
+        background-color:#fff;
+    }
+    .footer
+    {
+         background-color:#333;
     }
 
 

@@ -1,7 +1,8 @@
 <% provide(:title, "Sign in") %>
 
+<br />
 <div class="row">
-	 <div class="large-12 columns">
+	 <div class="small-6 small-centered columns">
 		<h1>Usuarios registrados</h1>
 	</div>
 
@@ -15,8 +16,9 @@
 		</div>
 	</div>
 
+<fieldset>
 	<div class="row">
-	  	<div class="small-6 columns offset3">
+	  	<div class="small-6 small-centered columns ">
 		    <%= simple_form_for(:session, url: sessions_path) do |f| %>
 
 		      <%= f.input :email %>
@@ -26,5 +28,6 @@
 		    <% end %>
 			</div>
 	</div>
+</fieldset>
 
 </div>

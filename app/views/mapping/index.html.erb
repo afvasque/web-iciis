@@ -14,17 +14,21 @@
     <%= link_to "Ver todos", :root %>
   <% end %>
 </div>
+
 <dl class="accordion" data-accordion>
   
   <% @projects.each do |m| %>
+
+  <% div_id = "panel#{m.id}" -%>
   <dd>
-    <a href="#panel1"><%= m.title %></a>
-    <div id="panel1" class="content">
+    <a href="\#<%= div_id %>"><%= m.title %></a>
+    <div id="<%= div_id %>" class="content">
         <% m.study_sites.each do |s| %>
           <p><%= link_to s.location, "#", :class=>"locationLink", :id => s.id %></p>
         <% end %>
     </div>
   </dd>
+
   <% end %>
 
 </dl>
