@@ -103,6 +103,12 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
+
+    #No destruimos el sitio de estudio porque podria tener otros proyectos asociados
+    @project.study_sites.each do |ss|
+      ss.project = nil
+    end
+
     @project.destroy
     respond_to do |format|
       format.html { redirect_to projects_url }
