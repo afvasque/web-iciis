@@ -219,4 +219,7 @@ es:
         study_site:
             name: "Nombre"
             location: "Localidad"
+        researcher:
+            name: "Nombre"
+            website: "Sitio web"
 
