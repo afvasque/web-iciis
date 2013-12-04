@@ -69,9 +69,13 @@
 			<div class = "small-2 columns">
 				<%= button_to 'Volver al mapa', :root, :method => :get, :class => "button secondary" %>
 			</div>
+			<!-- Si es usuario admin, o es proyecto del usuario ayudante, mostrar boton editar-->
+			<% if signed_in? %>
+			<div class = "small-2 columns">
+				<%= button_to 'Editar', edit_project_path(@project), :method => :get, :class => "button secondary" %>
+			</div>
+			<% end %>
 		</div>
-
-		<!-- Si es usuario admin, o es proyecto del usuario ayudante, mostrar boton editar-->
 
 	</div>
 </div>

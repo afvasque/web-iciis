@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
 	validates_presence_of :title, :summary, :methodology
 
 	def self.search(search)
-		projects = Project.where('title LIKE ? OR methodology LIKE ? OR summary LIKE ? OR publication LIKE ?', "%#{search}%","%#{search}%", "%#{search}%","%#{search}%").all
+		projects = Project.where('title ILIKE ? OR methodology ILIKE ? OR summary ILIKE ? OR publication ILIKE ?', "%#{search}%","%#{search}%", "%#{search}%","%#{search}%").all
 		
 	end
 

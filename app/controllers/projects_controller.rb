@@ -23,7 +23,8 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
-    @project.researcher
+    @project.researcher = Researcher.new
+    @main_researcher = @project.researcher
     @project.study_sites.build
 
     set_init_params
@@ -33,6 +34,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @researchers = Researcher.all
+
     @json = @project.study_sites.to_gmaps4rails
   end
 
@@ -69,15 +71,13 @@ class ProjectsController < ApplicationController
     
     @project.researcher = Researcher.find(project_params[:researcher]['id'])
     
+    @project.researchers = Array.new
+
     project_params[:researchers_attributes].each do |k,v|
       r = Researcher.find(v['id'])
       #agregar los nuevos
-      if not @project.researchers.include? r
+      if not @project.researchers.include? r and v['_destroy'] != '1'
         @project.researchers << r
-      end
-      #eliminar los antiguos
-      if v['_destroy'] == '1'
-        @project.researchers.delete(r)
       end
     end
 
@@ -116,7 +116,7 @@ class ProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
-      @main_researcher = @project.researcher
+      @main_researcher = Researcher.find_by_id(@project.researcher_id)
 
       @researchers = Researcher.all
 

@@ -25,10 +25,10 @@
 
       <%= f.simple_fields_for :researcher do |r| %>
        <div class="row">
-        <div class="small-12 columns">
+        <div class="small-6columns">
           <%= r.input :id, 
           collection: @researchers,
-          selected: @project.researcher, 
+          selected: @main_researcher.id,
           value_method: :id, 
           label_method: :name,
           label: "Nombre investigador" %>
@@ -46,17 +46,13 @@
       <div class="nested-fields">
         <div class="row">
           <div class="small-4 columns">
-            <%= r.input :id, 
-            collection: @researchers,
-            value_method: :id, 
-            label_method: :name,
-            label: "Nombre investigador" %>
+            <%= r.input :name, disabled: true %>
           </div>
-        </div>
-      </div>
       
-      <div class="small-12 columns">
-        <%= link_to_remove_association "Eliminar investigador", r %>
+      <div class="small-2 columns">
+        <%= link_to_remove_association "-", r %>
+      </div>
+        </div>
       </div>
       <% end %>
 

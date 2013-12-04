@@ -4,7 +4,7 @@ class StudySite < ActiveRecord::Base
 	acts_as_gmappable :check_process => false
 
   def self.search(search)
-        ss = StudySite.where('name LIKE ? OR location LIKE ?', "%#{search}%","%#{search}%").all
+        ss = StudySite.where('name ILIKE ? OR location ILIKE ?', "%#{search}%","%#{search}%").all
   end
 	
 	#  RETURNS LATLONG AS NEEDED FOR GMAPS API
