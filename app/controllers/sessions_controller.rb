@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     	sign_in(user)
     	redirect_to :projects
   	else
-    	flash[:error] = 'Invalid email/password combination' # Not quite right!
+    	flash[:error] = 'Datos incorrectos. Inténtelo nuevamente.' # Not quite right!
       	render 'new'
   	end
   end

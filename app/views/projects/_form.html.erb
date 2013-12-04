@@ -56,8 +56,8 @@
       </div>
       <% end %>
 
-                <div id="links" class="large-6 columns">
-          <%= link_to_add_association 'Agregar investigador', f, :researchers %>
+      <div id="links" class="large-6 columns">
+          <%= link_to_add_association '<i class="foundicon-plus"></i> Agregar investigador'.html_safe, f, :researchers %>
       </div>
 
   </div>
@@ -65,9 +65,8 @@
 
   <div class="row">
     <!-- Agregar otros INVESTIGADORES opcionalmente -->
-
     <div class="large-6 columns">
-      <%= link_to 'Ingresar nuevo investigador', "" , "data-reveal-id" => "myModal" %>
+      <%= link_to '<i class="foundicon-add-doc"></i> Ingresar nuevo investigador'.html_safe, "" , "data-reveal-id" => "myModal" %>
     </div>
 
   </div>
@@ -117,13 +116,16 @@
   <div class="row">
 
     <div class="row">
-      <div class="large-6 columns">
+      <div class="large-5 columns">
         <%= r.input :name, :placeholder => "Descripción del lugar, ej: 'Museo'." %>
       </div>
 
-      <div class="large-6 columns">
+      <div class="large-5 columns">
         <%= r.input :location, :placeholder => "Nombre de la localidad o zona administrativa.",  
         input_html: {class: 'location' + marker.to_s}  %>
+      </div>
+
+      <div class="large-2 columns">
       </div>
     </div>
 
@@ -137,18 +139,19 @@
 
       <!-- Agregar otros SITIOS DE INVESTIGACION opcionalmente -->
   <div id="links" class="large-12 columns">
-        <%= link_to_add_association 'Agregar sitio de estudio', f, :study_sites %>
+        <%= link_to_add_association '<i class="foundicon-plus"></i> Agregar sitio de estudio '.html_safe, f, :study_sites %>
   </div>
   </div>
 
   </div>
+  <br />
 
 <div class="row">
   <div class="small-6 columns">
       <%= f.button :submit, "Aceptar", :class=>"button radius" %>
   </div>
   <div class="small-6 columns">
-      <%= link_to 'Volver al mapa', :root, :class => "button secondary" %>
+      <%= link_to 'Volver al mapa', :root, :class => "button radius secondary right" %>
   </div>
 
 </div>

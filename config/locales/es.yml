@@ -197,3 +197,26 @@ es:
   activerecord:
     errors:
       <<: *errors
+    models:
+        researcher:
+            one: "Investigador"
+            other: "Investigadores"
+        user:
+            one: "Usuario"
+            other: "Usuarios"
+    attributes:
+        user:
+            role_id: "Rol"
+            password: "Contraseña"
+            password_confirmation: "Repetir contraseña"
+        project:
+            title: "Título"
+            summary: "Reseña"
+            methodology: "Metodología"
+            publication: "Publicaciones"
+            start_date: "Fecha de inicio"
+            end_date: "Fecha de término"
+        study_site:
+            name: "Nombre"
+            location: "Localidad"
+

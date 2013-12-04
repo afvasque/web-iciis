@@ -1,20 +1,17 @@
 <div class="nested-fields">
   
     <div class="row">
-      <div class="large-6 columns">
+      <div class="large-5 columns">
         <%= f.input :name, :placeholder => "Descripción del lugar, ej: 'Museo'." %>
       </div>
 
-      <div class="large-6 columns">
+      <div class="large-5 columns">
         <%= f.input :location, :placeholder => "Nombre de la localidad o zona administrativa.", 
         input_html: {class: 'toLocate'} %>
       </div>
-    </div>
 
-
-  <div class="row">
-      <div class="small-12 columns">
-        <%= link_to_remove_association "Eliminar sitio de estudio", f, :class=>"tiny alert button"%>
+      <div class="small-2 columns">
+        <%= link_to_remove_association '<i class="foundicon-remove"></i>'.html_safe, f %>
       </div>
   </div>
 
