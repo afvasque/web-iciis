@@ -33,7 +33,7 @@
 		<div class="row ">
 			<div class="small-6 columns">
 				<h2 class="subheader">Investigador responsable</h2>
-		  		<%= @main_researcher.name %>
+		  		<%= link_to_unless(@main_researcher.website.empty?, @main_researcher.name, @main_researcher.website) %>
 			</div>
 			<% if @assitant_researchers %>
 				<div class="small-6 columns">
