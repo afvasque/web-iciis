@@ -50,7 +50,7 @@
           </div>
       
       <div class="small-2 columns">
-        <%= link_to_remove_association "-", r %>
+        <%= link_to_remove_association '<i class="foundicon-remove"></i>'.html_safe, r %>
       </div>
         </div>
       </div>
@@ -139,7 +139,7 @@
 
       <!-- Agregar otros SITIOS DE INVESTIGACION opcionalmente -->
   <div id="links" class="large-12 columns">
-        <%= link_to_add_association '<i class="foundicon-plus"></i> Agregar sitio de estudio '.html_safe, f, :study_sites %>
+        <%= link_to_add_association '<i class="foundicon-plus"></i> Agregar sitio de estudio '.html_safe, f, :study_sites, :class => "add_sitio_estudio" %>
   </div>
   </div>
 
