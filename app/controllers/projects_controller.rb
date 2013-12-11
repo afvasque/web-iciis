@@ -46,8 +46,10 @@ class ProjectsController < ApplicationController
 
     @project.researcher = Researcher.find(project_params[:researcher]['id'])
     
-    project_params[:researchers_attributes].each do |k,v|
-      @project.researchers << Researcher.find(v['id'])
+    if project_params[:researchers_attributes] != nil
+        project_params[:researchers_attributes].each do |k,v|
+          @project.researchers << Researcher.find(v['id'])
+        end
     end
 
 
@@ -106,7 +108,7 @@ class ProjectsController < ApplicationController
 
     #No destruimos el sitio de estudio porque podria tener otros proyectos asociados
     @project.study_sites.each do |ss|
-      ss.project = nil
+      ss.destroy
     end
 
     @project.destroy
