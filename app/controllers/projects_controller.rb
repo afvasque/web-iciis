@@ -157,7 +157,8 @@ class ProjectsController < ApplicationController
     def set_init_params
       # Para renderear el select correctamente
       @researchers = Researcher.all unless params[:researchers]
-    
+
+
       # Para que no se caiga gmaps, requiere un JSON con latlong
       @json = '[{"lng":"-70.6157","lat":"-33.4992"}]' unless params[:location]
     end
