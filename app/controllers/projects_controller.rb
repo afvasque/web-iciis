@@ -75,11 +75,13 @@ class ProjectsController < ApplicationController
     
     @project.researchers = Array.new
 
-    project_params[:researchers_attributes].each do |k,v|
-      r = Researcher.find(v['id'])
-      #agregar los nuevos
-      if not @project.researchers.include? r and v['_destroy'] != '1'
-        @project.researchers << r
+    if not project_params[:researchers_attributes].nil?
+      project_params[:researchers_attributes].each do |k,v|
+        r = Researcher.find(v['id'])
+        #agregar los nuevos
+        if not @project.researchers.include? r and v['_destroy'] != '1'
+          @project.researchers << r
+        end
       end
     end
 
@@ -92,7 +94,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to @project, notice: 'El proyecto se guardó correctamente.' }
         format.json { head :no_content }
       else
         set_init_params

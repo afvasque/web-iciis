@@ -4,7 +4,8 @@ class MappingController < ApplicationController
     @mapped = true
     @projects = Project.search(params[:search])
     @searched_study_site = StudySite.search(params[:search])
-    
+    @searched_researchers = Researcher.search(params[:search])
+
     study_sites = []
     @projects.each do |p|
       p.study_sites.each do |ss|
@@ -16,6 +17,17 @@ class MappingController < ApplicationController
       sss.projects.each do |psss|
         if not @projects.include?(psss)
           study_sites << sss
+        end
+      end
+    end
+
+    @searched_researchers.each do |sr|
+      p = Project.find_all_by_researcher_id(sr.id)
+      p.each do |srp|
+        if not @projects.include?(srp)
+          srp.study_sites.each do |srpss|
+            study_sites << srpss
+          end
         end
       end
     end
