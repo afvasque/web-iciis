@@ -120,6 +120,23 @@
     overflow: hidden;
 }
 
+.second-grp {
+    border-radius: 0 0 5px;
+    float: right;
+    overflow: hidden;
+}
+
+
+.cerrar_sesion
+{
+    display: block;
+    float: left;
+    font-family: Arial;
+    font-size: 11px;
+    line-height: 25px;
+    padding: 0 9px;
+}
+
 
 #secondary-menu .second-grp a {
     color: #FFFFFF;
