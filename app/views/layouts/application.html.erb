@@ -14,7 +14,7 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Proyectos ICIIS" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "Pontificia Universidad Católica de Chile" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
     <%= csrf_meta_tags %>
@@ -26,10 +26,12 @@
     
       <%= render :partial =>'layouts/top_bar' %>
 
+    <div class="upper_space">
       <%= yield %>
       <%= yield :scripts %>
+    </div>
 
-  </div>
+</div>
 
 
     <%= javascript_include_tag "application" %>

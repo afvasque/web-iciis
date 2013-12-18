@@ -1,39 +1,110 @@
- <nav class="top-bar" data-topbar>
-    <ul class="title-area">
-      <li class="name">
-        <h1><%=link_to "Localizador de Proyectos ICIIS", :root %></h1>
-      </li>
-    </ul>
+<header id="header" role="banner">
 
-    <section class="top-bar-section">
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <% if signed_in? %>
-        <li class="has-dropdown">
-          <%= link_to "Gestionar Proyectos", :projects %>
-          <ul class="dropdown">
-            <li><%= link_to "Agregar proyecto", new_project_path %></li>
-            <li><%= link_to "Ver todos", :projects %></li>
-          </ul>
-        </li>
-        <li class="has-dropdown">
-          <%= link_to "Gestionar Usuarios", :users %>
-          <ul class="dropdown">
-            <li><%= link_to "Agregar usuario", new_user_path %></li>
-            <li><%= link_to "Ver todos", :users %></li>
-          </ul>
-        </li>
-        <li><%= link_to "Gestionar investigadores", :researchers %>
-        </li>
-                <li class="active"><%= link_to "Cerrar sesión", signout_path, method: "delete" %> </li>
-              <% else %>
-         <li class="active"> <%= link_to "Login", :signin %> </li>
-        <% end %>
-      </ul>
+<div class="header_uc">
 
-      <!-- Left Nav Section
-      <ul class="left">
-        <li><a href="#">Left Nav Button</a></li>
-      </ul>-->
-    </section>
-  </nav>
+  <nav id="secondary-menu">
+        <div class="main-grp">
+          <span class="anchor">
+              <a href="#" class="top-level">La Universidad</a>
+            <span class="sub-menu">
+              <a href="http://www.uc.cl/es/la-universidad/historia">Historia</a>
+              <a href="http://rectoria.uc.cl/" target="_blank">Rectoría</a>
+              <a href="http://www.uc.cl/es/la-universidad/autoridades">Autoridades</a>
+              <a href="http://secretariageneral.uc.cl">Secretaría General</a>
+              <a href="http://www.pastoraluc.cl/web/index/">Pastoral UC</a>
+              <a href="http://www.uc.cl/es/la-universidad/organizacion">Organización</a>
+              <a href="http://www.uc.cl/webpuc/site/launiversidad/autoridades/secretariageneral/pdf/reglamentos/declaraciondeprincipios.pdf">Principios UC</a>
+              <a href="http://www.uc.cl/images/pdf/estatutos_generales.pdf">Estatutos UC</a>
+              <a href="http://www.uc.cl/es/la-universidad/campus">Hechos y cifras</a>
+              <a href="http://www.uc.cl/index.php?option=com_content&amp;view=category&amp;id=1&amp;Itemid=147&amp;lang=es">Noticias UC</a>
+            </span>
+          </span><span class="separador">&nbsp;</span>
+
+          <span class="anchor">
+            <a href="#" class="top-level">Facultades</a>
+            
+            <span class="sub-menu">
+              <a target="_blank" href="http://agronomia.uc.cl">Agronomía e Ingeniería Forestal</a>
+              <a target="_blank" href="http://fadeu.uc.cl/">Arquitectura, Diseño y Estudios Urbanos</a>
+              <a target="_blank" href="http://www.uc.cl/artes/">Artes</a>
+              <a target="_blank" href="http://www.bio.puc.cl/">Ciencias Biológicas</a>
+              <a target="_blank" href="http://www.faceapuc.cl/">Ciencias Económicas y Administrativas</a>
+              <a href="/es/facultades/ciencias-sociales">Ciencias Sociales</a>
+              <a target="_blank" href="http://college.uc.cl/">College</a>
+              <a target="_blank" href="http://comunicaciones.uc.cl">Comunicaciones</a>
+              <a target="_blank" href="http://www.uc.cl/derecho/">Derecho</a>
+              <a target="_blank" href="http://www.uc.cl/educacion/">Educación</a>
+              <a target="_blank" href="/es/facultades/filosofia">Filosofía</a>
+              <a target="_blank" href="http://www.fisica.puc.cl/">Física</a>
+              <a target="_blank" href="http://www.uc.cl/historiageografiaycienciapolitica/">Historia, Geografía y Ciencia Política</a>
+              <a href="/es/facultades/ingenieria">Ingeniería</a>
+              <a target="_blank" href="http://www.uc.cl/letras/">Letras</a>
+              <a target="_blank" href="http://www.mat.puc.cl/">Matemáticas</a>
+              <a target="_blank" href="http://facultadmedicina.uc.cl/">Medicina</a>
+              <a target="_blank" href="http://www.quimica.uc.cl/">Química</a>
+              <a target="_blank" href="http://teologia.uc.cl">Teología</a>
+              <a target="_blank" href="http://villarrica.uc.cl/">Sede regional Villarrica</a>
+            </span>
+          </span>     
+
+          <span class="separador">&nbsp;</span>
+          <a href="http://www.uc.cl/es/organizaciones-vinculadas">Organizaciones vinculadas</a><span class="separador">&nbsp;</span>
+          <a href="http://bibliotecas.uc.cl/" target="_blank">Bibliotecas</a><span class="separador">&nbsp;</span>
+          <a href="http://www7.uc.cl/english/prospectus/" target="_blank">English</a>
+        </div>
+        <div class="second-grp">
+          <a href="https://sso.uc.cl/cas/login?service=https://portaluc.puc.cl/uPortal/Login" target="_blank">Mi Portal UC</a><span class="separador">&nbsp;</span>
+          <a href="https://webaccess.uc.cl/">Correo UC</a>
+        </div>
+      </nav>
+
+  <div class="logo_uc">
+    <h1><a href="http://www.uc.cl">Pontificia Universidad Católica de Chile</a></h1>
+  </div>
+
+  <nav id="menu">
+        <div class="main-grp">
+  
+  <% if signed_in? %>
+  <span class="anchor">
+    <%= link_to "Gestionar Proyectos", :projects %>
+    <span class="sub-menu pid-4 pid-nuestro-departamento">
+          <%= link_to "Agregar proyecto", new_project_path, :class => "second-level" %>
+          <%= link_to "Ver todos", :projects, :class => "second-level" %>
+    </span>
+  </span>    
+
+  <span class="separador">&nbsp;</span>
+
+    <span class="anchor">
+    <%= link_to "Gestionar Usuarios", :projects %>
+    <span class="sub-menu pid-4 pid-nuestro-departamento">
+          <%= link_to "Agregar usuario", new_user_path, :class => "second-level" %>
+          <%= link_to "Ver todos", :users, :class => "second-level" %>
+    </span>
+  </span> 
+
+  <span class="separador">&nbsp;</span>
+
+  <span class="anchor">
+    <%= link_to "Gestionar Investigadores", :researchers %>
+  </span>
+  
+  </div>
+
+
+  <div class="second-grp">
+    <%= link_to "Cerrar sesión", signout_path, :class => "cerrar_sesion", method: "delete" %>
+  </div> 
+
+  <% else %>
+    <%= link_to "Login", :signin %>
+  <% end %>
+
+</nav>
+  <a href="/">
+  <h2 id="tit-ing">Localizador de Proyectos</h2>
+  <h2 id="tit-escuela">Centro Interdisciplinario de Estudios Interculturales e Indígenas</h2>
+</a>
+</div>
+</header>
