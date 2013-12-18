@@ -1,0 +1,249 @@
+#header{
+    background:url('Parinacota_volcano.png') no-repeat;
+     margin: 0 auto;
+    position: relative;
+    width: 1008px;
+}
+
+.logo_uc
+{
+    background: url("fondo-logo.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 146px;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    width: 212px;
+    z-index: 110;
+}
+
+.logo_uc a {
+    background: url("logo-uc.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    font-size: 1px;
+    height: 102px;
+    margin: 19px 0 0 19px;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 174px;
+}
+
+.header_uc
+{
+    margin: 0 auto;
+    width: 928px;
+}
+
+#secondary-menu {
+    background: none repeat scroll 0 0 #2F549E;
+    border-radius: 0 0 5px;
+    float: right;
+    height: 25px;
+    margin: 0 0 -25px;
+    position: relative;
+    width: 721px;
+    z-index: 100;
+}
+
+
+#secondary-menu .main-grp {
+    background: none repeat scroll 0 0 #2F549E;
+    float: left;
+    padding-left: 40px;
+}
+
+
+
+
+#secondary-menu .anchor {
+    float: left;
+    position: relative;
+}
+
+#secondary-menu .anchor a.top-level {
+    clear: both;
+    float: none;
+}
+
+#secondary-menu .anchor:hover .sub-menu {
+    background: none repeat scroll 0 0 #4264AA;
+    display: block;
+}
+
+#secondary-menu a {
+    color: #FEBE10;
+    display: block;
+    float: left;
+    font-family: Arial;
+    font-size: 11px;
+    line-height: 25px;
+    padding: 0 9px;
+}
+#secondary-menu a:hover {
+    background: none repeat scroll 0 0 #4265AA;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+
+#secondary-menu .sub-menu {
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 25px;
+    width: 230px;
+}
+
+#secondary-menu .sub-menu a {
+    color: #FFFFFF;
+    float: none;
+}
+#secondary-menu .sub-menu a:hover {
+    background: none repeat scroll 0 0 #FEBE10;
+    color: #2F549E;
+}
+
+#secondary-menu .separador {
+    background: none repeat scroll 0 0 #5898CB;
+    display: block;
+    float: left;
+    height: 17px;
+    margin: 4px 0;
+    overflow: hidden;
+    padding: 0;
+    width: 1px;
+}
+
+#secondary-menu .second-grp {
+    background: none repeat scroll 0 0 #597BB8;
+    border-radius: 0 0 5px;
+    float: right;
+    overflow: hidden;
+}
+
+
+#secondary-menu .second-grp a {
+    color: #FFFFFF;
+}
+
+#secondary-menu .second-grp a:hover {
+    background: none repeat scroll 0 0 #FEBE10;
+    color: #2F549E;
+}
+h2#tit-ing {
+    color: #FFF;
+    font-family: 'Cinzel',serif;
+    font-size: 18px;
+    left: 297px;
+    line-height: 26px;
+    overflow: hidden;
+    position: absolute;
+    top: 38px;
+    z-index: 99;
+}
+
+h2#tit-escuela {
+    color: #FFF;
+    font-family: 'Cinzel',serif;
+    font-size: 13px;
+    left: 297px;
+    line-height: 19px;
+    overflow: hidden;
+    position: absolute;
+    top: 58px;
+    z-index: 99;
+}
+
+#menu {
+    background: none repeat scroll 0 0 #2F549E;
+    border-radius: 0 5px 5px 0;
+    height: 25px;
+    margin: -54px 0 0 200px;
+    position: relative;
+    z-index: 99;
+}
+#menu .main-grp {
+    background-color: #2F549E;
+    border-radius: 0 5px 5px 0;
+    float: left;
+    padding-left: 30px;
+}
+#menu a {
+    color: #FEBE10;
+    display: block;
+    float: left;
+    font-family: Arial;
+    font-size: 11px;
+    line-height: 25px;
+    padding: 0 20px;
+}
+
+#menu a.second-level {
+    text-transform: none;
+}
+#menu a:hover {
+    background: none repeat scroll 0 0 #4265AA;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+#menu a.last {
+    border-radius: 0 5px 5px 0;
+}
+#menu .separador {
+    background: none repeat scroll 0 0 #5898CB;
+    display: block;
+    float: left;
+    height: 17px;
+    margin: 4px 0;
+    overflow: hidden;
+    padding: 0;
+    width: 1px;
+}
+#menu .anchor {
+    float: left;
+    position: relative;
+}
+#menu .anchor a.top-level {
+    clear: both;
+    float: none;
+}
+#menu .sub-menu {
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 25px;
+    width: 230px;
+}
+
+#menu .anchor:hover a.top-level {
+    background: none repeat scroll 0 0 #4264AA;
+    color: #FFFFFF;
+}
+#menu .anchor:hover .sub-menu {
+    background: none repeat scroll 0 0 #4264AA;
+    display: block;
+}
+#menu .sub-menu a {
+    color: #FFFFFF;
+    float: none;
+}
+#menu .sub-menu a:hover {
+    background: none repeat scroll 0 0 #FEBE10;
+    color: #2F549E;
+}
+
+#menu .anchor:hover a.top-level {
+    background: none repeat scroll 0 0 #4264AA;
+    color: #FFFFFF;
+}
+#menu .anchor:hover .sub-menu {
+    background: none repeat scroll 0 0 #4264AA;
+    display: block;
+}
+#menu .sub-menu a {
+    color: #FFFFFF;
+    float: none;
+}
+#menu .sub-menu a:hover {
+    background: none repeat scroll 0 0 #FEBE10;
+    color: #2F549E;
+}

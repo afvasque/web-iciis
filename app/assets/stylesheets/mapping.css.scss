@@ -4,14 +4,12 @@
     }
     
     html, body {
-    height: 100%;
+    height: 768px;
     margin:0;
     }
     
     .wrapper {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
+    height: 768px;
     margin: 0 auto -20px;
     }
 
@@ -30,9 +28,9 @@
     }
 
 
-html { height: 100% }
+html { height: 768px; }
 
-body { height: 100%; margin: 0px; padding: 0px }
+body { height: 768px; margin: 0px; padding: 0px }
 
 .no_padding
 {
@@ -88,10 +86,13 @@ h1.header a img:hover
 
 .full-width
 {
-	min-width:100%;
+	min-width:1024px;
+    margin-top: 35px;
 }
 
 section.section p.title a
 {
 	white-space: normal !important;
 }
+
+

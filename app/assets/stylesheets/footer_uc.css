@@ -1,0 +1,32 @@
+#footer-uc {
+    background: none repeat scroll 0 0 #A2A2A2;
+    color: #FFFFFF;
+    height: 76px;
+    padding: 10px 0;
+    text-align: center;
+}
+#footer-uc p {
+    margin: 0;
+}
+#footer-uc a {
+    border-bottom: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+#footer-uc a:hover {
+    border-bottom: 1px solid #333333;
+    color: #333333;
+    text-decoration: none;
+}
+#footer-uc .optimizado {
+    color: #E6E6E6;
+    font-size: 11px;
+    padding: 10px 0 0;
+}
+
+
+.grid {
+    margin: 0 auto;
+    overflow: hidden;
+    width: 950px;
+}
