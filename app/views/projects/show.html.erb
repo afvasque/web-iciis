@@ -5,15 +5,17 @@
 
 		<div class="row ">
 			<div class="small-12 columns">
-				<h1><%= @project.title %></h1>
+				<h1>
+				<small> <%= @project.research_field %> </small>  <br />
+				<%= @project.title %>
+				</h1> 
+				
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="small-4 columns">
-				<div class="alert-box secondary">
-					Inicio: <%= @project.start_date %> - Fin: <%= @project.end_date %>
-				</div>
+				Inicio: <%= @project.start_date %> - Fin: <%= @project.end_date %>
 			</div>
 		</div>
 

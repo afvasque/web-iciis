@@ -11,8 +11,11 @@
 
   
   <div class="row ">
-    <div class="small-12 columns">
+    <div class="small-6 columns">
       <%= f.input :title, :placeholder=>"Título que identifique el proyecto de investigación" %>
+    </div>
+    <div class="small-6 columns">
+      <%= f.input :research_field, collection: Project::RESEARCH_FIELD.values %>
     </div>
   </div>
 

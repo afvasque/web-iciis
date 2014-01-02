@@ -45,7 +45,8 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params.except(:researchers_attributes, :researcher))
 
     @project.researcher = Researcher.find(project_params[:researcher]['id'])
-    
+    @main_researcher = @project.researcher
+
     if project_params[:researchers_attributes] != nil
         project_params[:researchers_attributes].each do |k,v|
           @project.researchers << Researcher.find(v['id'])
@@ -144,6 +145,7 @@ class ProjectsController < ApplicationController
         :methodology, 
         :publication, 
         :summary,
+        :research_field,
         {:researcher => [:id, :_destroy]},
         {:researcher_attributes => [:id, :_destroy]},
         {:researchers_attributes => [:id, :_destroy]},

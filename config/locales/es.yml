@@ -216,6 +216,7 @@ es:
             publication: "Publicaciones"
             start_date: "Fecha de inicio"
             end_date: "Fecha de término"
+            research_field: "Línea de investigación"
         study_site:
             name: "Nombre"
             location: "Localidad"

@@ -1,4 +1,7 @@
 class Project < ActiveRecord::Base
+
+	RESEARCH_FIELD = {politicas: 'Políticas públicas', desarrollo: 'Desarrollo y medioambiente', 
+		patrimonio: 'Patrimonio cultural', subjetividades: 'Subjetividades y conflicto'}
 	has_and_belongs_to_many :researchers
 	belongs_to :researcher #investigador principal
 	
@@ -9,7 +12,9 @@ class Project < ActiveRecord::Base
 	accepts_nested_attributes_for :study_sites
 	validates_length_of :title, :maximum => 200
 	validate :word_count_summary
-	validates_presence_of :title, :summary, :methodology
+	validates_presence_of :title, :summary, :methodology, :research_field
+	validates :research_field, inclusion: {in: RESEARCH_FIELD.values}
+
 
 	def self.search(search)
 		projects = Project.where('title ILIKE ? OR methodology ILIKE ? OR summary ILIKE ? OR publication ILIKE ?', "%#{search}%","%#{search}%", "%#{search}%","%#{search}%").all
@@ -28,4 +33,6 @@ class Project < ActiveRecord::Base
 	    def word_count_summary
 	      errors.add(:base, "El resúmen debe tener máximo 250 palabras") if self.summary.split.size > 250
 	    end
+
+
 end
