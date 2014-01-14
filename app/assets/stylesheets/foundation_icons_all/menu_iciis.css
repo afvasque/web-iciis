@@ -1,0 +1,62 @@
+.inserblue h3 {
+    background: none repeat scroll 0 0 #597BB8;
+    border-radius: 7px 7px 0 0;
+    color: #eee;
+    display: block;
+    font-size: 15px;
+    height: 30px;
+    margin: -29px 17px 0;
+    padding: 5px 0px 5px 15px;
+    text-align: left !important;
+    width: 201px !important;
+}
+.inserblue ul.menu,#izquierda .moduletable.inter ul.menu {
+    background: #2F549E;
+    width: 201px;
+    padding-bottom:5px;
+    border-radius: 0px 0px 7px 7px;
+
+}
+.inserblue ul.menu li a, .inserblue ul.menu li.active a {
+    background: url("images/flecha-a.png") no-repeat scroll 1px 4px transparent;
+        color: #FEBE10 !important;
+ border-bottom: 1px solid #2176B7;
+    line-height: 14px;
+    font-size: 10px;
+    text-transform: none;
+    font-weight: bold;
+    padding: 0 10px 3px;
+        text-decoration: none;
+        width:170px;
+        display:inline-block;
+
+}
+.inserblue ul.menu li {
+   
+margin: 0 5px 3px;
+}
+
+.inserblue ul.menu li.active {
+    background: transparent;
+}
+
+.moduletable.inserblue ul.menu .active.deeper.parent li {
+    background-color: transparent;
+    float: left;
+    font-family: arial,helvetica,sans-serif;
+    width: 180px;
+    text-transform: capitalize;
+    font-size: 11px;
+    color: #D4E2F2;
+    display: block;
+    border-bottom: none;
+}
+
+.inserblue ul.menu li li:hover a {
+    color: #FFFFFF !important;
+}
+
+.inserblue ul.menu li:hover a, .inserblue ul.menu li.active:hover a {
+    background: url("images/flecha-b.png") no-repeat scroll 1px 4px #597BB8;
+    color: #FFFFFF !important;
+}

@@ -3,6 +3,10 @@
 <br />
 <div class="row collapse">
 
+<div class="row">
+  <%= render :partial =>'mapping/menu_iciis' %>
+</div>
+
 <div class="small-10 columns">
   <%= form_tag search_path, :method => 'get' do %>
     <%= text_field_tag :search, params[:search], placeholder: "Buscar proyectos" %>
@@ -23,6 +27,8 @@
   </div>
   <% end %>
    <br />
+
+
 
 <div class="row">
 <dl class="accordion" data-accordion>
