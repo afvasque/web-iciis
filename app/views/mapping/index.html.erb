@@ -1,5 +1,5 @@
 <div class="row full-width">
-<div class="large-4 columns no_padding">
+<div class="large-3 columns no_padding">
 <br />
 <div class="row collapse">
 
@@ -7,30 +7,35 @@
   <%= render :partial =>'mapping/menu_iciis' %>
 </div>
 
-<div class="small-10 columns">
+<div class="row">
+  <div class="fit-iciis">
   <%= form_tag search_path, :method => 'get' do %>
     <%= text_field_tag :search, params[:search], placeholder: "Buscar proyectos" %>
-</div>
-    <div class="small-2 columns">
-      <button type="submit" class="button postfix">
-        <i class="foundicon-search"></i>
-      </button>
-    </div>
+  </div>
+
+  <button type="submit" class="button-fit-iciis">
+    <i class="foundicon-search"></i>
+  </button>
   <% end %>
 
-</div>
+
   <% if @mapped %>
-  <div class="row">
-    <div class="small-6 columns">
+  <div class="fit-iciis-mapped">
+
       <%= link_to '<i class="foundicon-left-arrow"></i> Ver todos los proyectos.'.html_safe, :root %>
-    </div>
+
   </div>
   <% end %>
    <br />
 
+  
 
+</div>
 
-<div class="row">
+</div>
+
+<div class="iciis-submenu">
+  <h5> Proyectos en curso </h5>
 <dl class="accordion" data-accordion>
   
   <% @projects.each do |m| %>
@@ -52,8 +57,11 @@
 </div>
 
 
-<div class="large-8 columns no_padding">
+<div class="large-9 columns no_padding">
 
+  <div class="panel">
+    <h2>Localizador de proyectos</h2>
+  </div>
   <div class="map_container_index">
     
     <%= gmaps(

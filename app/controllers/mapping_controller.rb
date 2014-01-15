@@ -47,7 +47,8 @@ class MappingController < ApplicationController
 
       @markers[study_site.id] = marker
 
-      study_site.projects.each do |p|
+      to_add = Project.all.limit(5).order("id desc")
+      to_add.each do |p|
         if not @projects.include?(p)
           @projects << p
         end

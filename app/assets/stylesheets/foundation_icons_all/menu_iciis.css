@@ -5,7 +5,7 @@
     display: block;
     font-size: 15px;
     height: 30px;
-    margin: -29px 17px 0;
+    margin: -29px -16px 0;
     padding: 5px 0px 5px 15px;
     text-align: left !important;
     width: 201px !important;
@@ -15,6 +15,7 @@
     width: 201px;
     padding-bottom:5px;
     border-radius: 0px 0px 7px 7px;
+    margin-left: -16px;
 
 }
 .inserblue ul.menu li a, .inserblue ul.menu li.active a {
@@ -59,4 +60,34 @@ margin: 0 5px 3px;
 .inserblue ul.menu li:hover a, .inserblue ul.menu li.active:hover a {
     background: url("images/flecha-b.png") no-repeat scroll 1px 4px #597BB8;
     color: #FFFFFF !important;
+}
+
+.fit-iciis{
+    margin: 0 -17px;
+    width:150px;
+}
+
+button.button-fit-iciis{
+    height: 37px;
+    position: relative;
+    left: 133px;
+    top: -53px;
+    padding: 15px;
+    text-align: center;
+    line-height: 7px;
+}
+
+.iciis-submenu{
+    width: 201px;
+    margin: -50px 0 0 8px;
+    background-color: #EEE;
+    border-radius: 10px;
+    border: 2px solid #E2E2E2;
+    padding: 0.5em;
+}
+
+.fit-iciis-mapped{
+    width: 201px;
+    position: relative;
+    top: -54px;
 }
