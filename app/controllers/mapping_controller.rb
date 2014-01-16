@@ -2,6 +2,7 @@ class MappingController < ApplicationController
 
   def search
     @mapped = true
+    @projects = nil
     @projects = Project.search(params[:search])
     @searched_study_site = StudySite.search(params[:search])
     @searched_researchers = Researcher.search(params[:search])
@@ -32,25 +33,36 @@ class MappingController < ApplicationController
       end
     end
 
-    get_markers(study_sites)
-    render 'index'
+    study_sites.each do |ss|
+      ss.projects.each do |p|
+        if not @projects.include?(p)
+          @projects << p
+        end
+      end
+    end
+
+
+    get_markers(study_sites, true)
+    render :action => 'index'
   end
 
   def index
     @projects = []    
-    get_markers(StudySite.all)
+    get_markers(StudySite.all, false)
   end
 
-  def get_markers(study_sites)
+  def get_markers(study_sites, is_search)
     @markers = Hash.new
     @json = study_sites.to_gmaps4rails do |study_site, marker|
 
       @markers[study_site.id] = marker
 
-      to_add = Project.all.limit(5).order("id desc")
-      to_add.each do |p|
-        if not @projects.include?(p)
-          @projects << p
+      if not is_search
+        to_add = Project.all.limit(5).order("id desc")
+        to_add.each do |p|
+          if not @projects.include?(p)
+            @projects << p
+          end
         end
       end
       

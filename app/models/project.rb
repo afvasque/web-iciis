@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
 
 
 	def self.search(search)
-		projects = Project.where('title ILIKE ? OR methodology ILIKE ? OR summary ILIKE ? OR publication ILIKE ?', "%#{search}%","%#{search}%", "%#{search}%","%#{search}%").all
+		projects = Project.where('title ILIKE ? OR methodology ILIKE ? OR summary ILIKE ? OR publication ILIKE ?', "%#{search}%","%#{search}%", "%#{search}%","%#{search}%").to_a
 		
 	end
 
