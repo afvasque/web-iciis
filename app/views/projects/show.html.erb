@@ -1,11 +1,14 @@
 <%= stylesheet_link_tag "gmaps4rails" %>
 <div class="row">
 	<div class="row ">
+
+	<% if notice %>
 	<div class="small-12 columns">
 		<div data-alert class="alert-box success radius">
 			<%= notice %><a href="#" class="close">&times;</a>
 	</div>
 	</div>
+	<% end %>
 		<div class="row ">
 			<div class="small-12 columns">
 				<h1>
