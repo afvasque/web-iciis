@@ -30,3 +30,9 @@
     overflow: hidden;
     width: 950px;
 }
+
+.logos-footer{
+    margin:0 auto 10px;
+    padding: 5px;
+    width: 456px;
+}

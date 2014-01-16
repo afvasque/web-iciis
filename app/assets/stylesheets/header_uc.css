@@ -1,8 +1,9 @@
 #header{
-    background:url('Parinacota_volcano.png') no-repeat;
+    background:url('icuc.png') no-repeat scroll 16px;
      margin: 0 auto;
     position: relative;
     width: 1008px;
+    background-size: 952px 70px
 }
 
 .logo_uc
@@ -40,7 +41,7 @@
     height: 25px;
     margin: 0 0 -25px;
     position: relative;
-    width: 751px;
+    width: 752px;
     z-index: 100;
 }
 
@@ -172,7 +173,7 @@ h2#tit-escuela {
     background: none repeat scroll 0 0 #2F549E;
     border-radius: 0 5px 5px 0;
     height: 25px;
-    margin: -54px 0 0 177px;
+    margin: -54px 0 0 176px;
     position: relative;
     z-index: 99;
 }
