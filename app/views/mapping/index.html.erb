@@ -71,7 +71,8 @@
       "markers" => 
       {"data" => @json, 
         "options" => 
-        {"do_clustering" => true, 
+        {"custom_infowindow_class" => 'infowindow',
+          "do_clustering" => true, 
         "randomize" => true}
       }) %>
 
@@ -86,6 +87,25 @@
 <% content_for :scripts do %>
 
 <script type="text/javascript" charset="utf-8">
+
+  Gmaps.map.infobox = function(boxText) {
+  return {
+     content: boxText
+    ,disableAutoPan: false
+    ,maxWidth: 0
+    ,pixelOffset: new google.maps.Size(-140, 0)
+    ,zIndex: null
+    ,boxStyle: { 
+      background: "url('http://google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.5/examples/tipbox.gif') no-repeat"
+      ,width: "280px"
+       }
+    ,closeBoxMargin: "10px"
+    ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+    ,infoBoxClearance: new google.maps.Size(1, 1)
+    ,isHidden: false
+    ,pane: "floatPane"
+    ,enableEventPropagation: false
+ }};
 
   Gmaps.map.callback = function() {
     Gmaps.map.map.setOptions({

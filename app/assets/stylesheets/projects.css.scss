@@ -22,8 +22,16 @@ embed {
 
 h1.infowindow
 {
-	font-size: 90%;
+	font-size: 95%;
 	width: 200px;
+}
+
+.infowindow{
+    background-color: #F7F7F7;
+    border: 2px solid #999;
+    border-radius: 10px;
+    padding:10px;
+    color:#336666;
 }
 
 .row {

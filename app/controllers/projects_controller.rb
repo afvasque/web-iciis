@@ -16,7 +16,15 @@ class ProjectsController < ApplicationController
     @assitant_researchers = @project.researchers
 
     #Para mostrar los sitios de investigacion de cada proyecto
-    @json = @project.study_sites.to_gmaps4rails
+    @json = @project.study_sites.to_gmaps4rails do |item, marker|
+
+
+        marker.picture({:picture => '/assets/image3047.png',
+                        :width => 50,
+                        :height => 50})
+
+      end
+
 
   end
 

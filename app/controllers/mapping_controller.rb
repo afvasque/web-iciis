@@ -57,8 +57,9 @@ class MappingController < ApplicationController
       marker.infowindow render_to_string(:partial => "/projects/infowindow", 
         :locals => { :study_site => study_site, :projects => study_site.projects})
         marker.title "#{study_site.location}"
-        marker.picture({:width => 32,
-                        :height => 32})
+        marker.picture({:picture => '/assets/image3047.png',
+                        :width => 50,
+                        :height => 50})
         #Id para despues abrir infowindow desde el menu acordeon
         marker.json({ :id => study_site.id })
     end
@@ -67,6 +68,14 @@ class MappingController < ApplicationController
   def gmaps4rails_address
     #describe how to retrieve the address from your model
     "#{self.location}" 
+  end
+
+  def gmaps4rails_marker_picture
+  {
+    "picture" => 'Icono_localizador_r.png',
+    "width" => 20,
+    "height" => 20,
+  }
   end
 
   private
