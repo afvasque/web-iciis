@@ -12,7 +12,7 @@
 		<div class="row ">
 			<div class="small-12 columns">
 				<h1>
-				<small> <%= @project.research_field %> </small>  <br />
+				<small> <%= @project.research_field if @project.research_field %> </small>  <br />
 				<%= @project.title %>
 				</h1> 
 				
