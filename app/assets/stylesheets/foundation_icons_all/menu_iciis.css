@@ -19,7 +19,7 @@
 
 }
 .inserblue ul.menu li a, .inserblue ul.menu li.active a {
-    background: url("images/flecha-a.png") no-repeat scroll 1px 4px transparent;
+    background: url("/assets/flecha-a.png") no-repeat scroll 1px 4px transparent;
         color: #FEBE10 !important;
  border-bottom: 1px solid #2176B7;
     line-height: 14px;
