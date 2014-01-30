@@ -169,6 +169,7 @@ class ProjectsController < ApplicationController
     def set_init_params
       # Para renderear el select correctamente
       @researchers = Researcher.all unless params[:researchers]
+      @researchers.sort_by! {|u| u.name}
 
 
       # Para que no se caiga gmaps, requiere un JSON con latlong
