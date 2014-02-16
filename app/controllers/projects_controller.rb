@@ -41,6 +41,11 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+  # Solo lo puede editar el creador o el admin
+    if current_user.role_id != 1 and @project.creator_id != nil and current_user.id != @project.creator_id 
+      flash[:alert] = "No tiene permiso para editar este proyecto"
+      redirect_to @project
+    end
     @researchers = Researcher.all
 
     @json = @project.study_sites.to_gmaps4rails
@@ -54,6 +59,10 @@ class ProjectsController < ApplicationController
 
     @project.researcher = Researcher.find(project_params[:researcher]['id'])
     @main_researcher = @project.researcher
+
+    # Asociar proyecto al usuario que lo creo
+    # para que solo el lo pueda editar
+    @project.creator_id = current_user.id
 
     if project_params[:researchers_attributes] != nil
         project_params[:researchers_attributes].each do |k,v|

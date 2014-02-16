@@ -6,9 +6,18 @@
 	<div class="small-12 columns">
 		<div data-alert class="alert-box success radius">
 			<%= notice %><a href="#" class="close">&times;</a>
-	</div>
+		</div>
 	</div>
 	<% end %>
+
+	<% if alert %>
+	<div class="small-12 columns">
+		<div data-alert class="alert-box warning radius">
+			<%= alert %><a href="#" class="close">&times;</a>
+		</div>
+	</div>
+	<% end %>
+
 		<div class="row ">
 			<div class="small-12 columns">
 				<h1>
@@ -78,10 +87,12 @@
 				<%= button_to 'Volver al mapa', :root, :method => :get, :class => "button secondary" %>
 			</div>
 			<!-- Si es usuario admin, o es proyecto del usuario ayudante, mostrar boton editar-->
-			<% if signed_in? %>
+			<% if signed_in? and (current_user.role_id == 1 or @project.creator_id == current_user.id)%>
+			
 			<div class = "small-2 columns">
 				<%= button_to 'Editar', edit_project_path(@project), :method => :get, :class => "button secondary" %>
 			</div>
+			
 			<% end %>
 		</div>
 
