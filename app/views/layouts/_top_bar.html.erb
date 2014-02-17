@@ -67,6 +67,11 @@
 
         <div class="main-grp">
   
+    <span class="anchor">
+    <%= link_to "Mapa de proyectos", mapping_index_path %>
+  </span>    
+
+  <span class="separador">&nbsp;</span>
   <% if signed_in? %>
   <span class="anchor">
     <%= link_to "Gestionar Proyectos", :projects %>
