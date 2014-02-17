@@ -1,5 +1,6 @@
 WebICIIS::Application.routes.draw do
   get '/search', to: 'mapping#search'
+  get '/search_projects', to: 'mapping#search_in_projects'
   resources :users
 
   #resources :projects do

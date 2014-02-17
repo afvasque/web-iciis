@@ -3,7 +3,15 @@
 </div>
 
 <div class="row">
-  <div class="small-6 small-centered columns">
+  <div class="large-6 offset-3 large-centered columns">
+    <%= form_tag search_projects_path, :method => 'get' do %>
+      <%= render :partial => 'layouts/search_bar' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 offset-3 large-centered columns">
     <table>
       <thead>
         <tr>
@@ -39,4 +47,8 @@
 
 <div class="row">
   <%= button_to '+ Agregar proyecto', new_project_path, :method => :get, :class => "button small" %>
+</div>
+
+<div class="row">
+  <%= link_to "Regresar", :back %>
 </div>

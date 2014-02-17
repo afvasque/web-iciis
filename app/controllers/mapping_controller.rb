@@ -1,48 +1,16 @@
 class MappingController < ApplicationController
 
+   
+  def search_in_projects
+    get_search_projects
+
+    render 'projects/index'
+  end
+
   def search
-    @mapped = true
-    @projects = nil
-    @projects = Project.search(params[:search])
-    @searched_study_site = StudySite.search(params[:search])
-    @searched_researchers = Researcher.search(params[:search])
+    
+    get_search_projects
 
-    study_sites = []
-    @projects.each do |p|
-      p.study_sites.each do |ss|
-        study_sites << ss
-      end
-    end
-
-    @searched_study_site.each do |sss|
-      sss.projects.each do |psss|
-        if not @projects.include?(psss)
-          study_sites << sss
-        end
-      end
-    end
-
-    @searched_researchers.each do |sr|
-      p = Project.find_all_by_researcher_id(sr.id)
-      p.each do |srp|
-        if not @projects.include?(srp)
-          srp.study_sites.each do |srpss|
-            study_sites << srpss
-          end
-        end
-      end
-    end
-
-    study_sites.each do |ss|
-      ss.projects.each do |p|
-        if not @projects.include?(p)
-          @projects << p
-        end
-      end
-    end
-
-
-    get_markers(study_sites, true)
     render :action => 'index'
   end
 
@@ -91,6 +59,51 @@ class MappingController < ApplicationController
   end
 
   private
+
+      def get_search_projects
+        @mapped = true
+        @projects = nil
+        @projects = Project.search(params[:search])
+        @searched_study_site = StudySite.search(params[:search])
+        @searched_researchers = Researcher.search(params[:search])
+
+        study_sites = []
+        @projects.each do |p|
+          p.study_sites.each do |ss|
+            study_sites << ss
+          end
+        end
+
+        @searched_study_site.each do |sss|
+          sss.projects.each do |psss|
+            if not @projects.include?(psss)
+              study_sites << sss
+            end
+          end
+        end
+
+        @searched_researchers.each do |sr|
+          p = Project.find_all_by_researcher_id(sr.id)
+          p.each do |srp|
+            if not @projects.include?(srp)
+              srp.study_sites.each do |srpss|
+                study_sites << srpss
+              end
+            end
+          end
+        end
+
+        study_sites.each do |ss|
+          ss.projects.each do |p|
+            if not @projects.include?(p)
+              @projects << p
+            end
+          end
+        end
+
+        get_markers(study_sites, true)
+
+      end
 
       def admin_user
       redirect_to(signin_path) unless signed_in?
