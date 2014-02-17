@@ -1,31 +1,36 @@
 <div class="row">
-<h1>Usuarios</h1>
+  <h1>Usuarios registrados</h1>
+<div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Role</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Rol</th>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
-        <td><%= user.email %></td>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
 
-        <td><%= user.role_id %></td>
-        <td><%= link_to 'Ver', user %></td>
-        <td><%= link_to 'Editar', edit_user_path(user) %></td>
-        <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <td><%= user.email %></td>
 
-<%= button_to '+ Agregar usuario', new_user_path, :method => :get, :class => "small button" %>
+            <td><%= user.get_nombre_rol %></td>
+            <td><%= link_to '<i class="foundicon-edit"></i>'.html_safe, edit_user_path(user) %></td>
+            <td><%= link_to '<i class="foundicon-remove"></i>'.html_safe, user, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <%= button_to '+ Agregar usuario', new_user_path, :method => :get, :class => "small button" %>
 </div>

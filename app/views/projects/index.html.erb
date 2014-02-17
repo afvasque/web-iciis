@@ -1,32 +1,42 @@
 <div class="row">
-<h1>Proyectos</h1>
+  <h1>Proyectos</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Título</th>
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <table>
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Investigador responsable</th>
 
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.title %></td>
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><%= link_to project.title, project %></td>
+            <td><%= link_to_unless(project.researcher.website.empty?, project.researcher.name, project.researcher.website) %></td>
 
-        <td><%= link_to 'Ver', project %></td>
-        <td><%= link_to 'Editar', edit_project_path(project) %></td>
-        <td><%= link_to 'Eliminar', project, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            
+            <!-- Solo admin y usuario creador pueden editar -->
+            <% if signed_in? and (current_user.role_id == 1 or project.creator_id == current_user.id)%>
+              <td><%= link_to '<i class="foundicon-edit"></i>'.html_safe, edit_project_path(project) %></td>
+              <td><%= link_to '<i class="foundicon-remove"></i>'.html_safe, project, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+            <% else %>
+              <td></td>
+              <td></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<br>
-
-
-<%= button_to '+ Agregar proyecto', new_project_path, :method => :get, :class => "button small" %>
+<div class="row">
+  <%= button_to '+ Agregar proyecto', new_project_path, :method => :get, :class => "button small" %>
 </div>

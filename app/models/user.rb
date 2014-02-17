@@ -9,4 +9,12 @@ class User < ActiveRecord::Base
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
+    def get_nombre_rol
+    	if self.role_id == 1
+    		"Administrador"
+    	else
+    		"Editor"
+    	end
+    end
+
 end

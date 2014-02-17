@@ -1,31 +1,35 @@
 <div class="row">
-<h1>Investigadores</h1>
+    <h1> Investigadores </h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Website</th>
-      <th></th>
-      <!-- <th></th> -->
-    </tr>
-  </thead>
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Website</th>
+          <th></th>
+          <!-- <th></th> -->
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @researchers.each do |researcher| %>
-      <tr>
-        <td><%= researcher.name %></td>
-        <td><%= researcher.email %></td>
-        <td><%= researcher.website %></td>
-        <td><%= link_to 'Editar', edit_researcher_path(researcher) %></td>
-        <!-- <td><%= link_to 'Eliminar', researcher, method: :delete, data: { confirm: '¿Está seguro?' } %></td> -->
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @researchers.each do |researcher| %>
+          <tr>
+            <td><%= researcher.name %></td>
+            <td><%= researcher.email %></td>
+            <td><%= link_to "Ir al sitio",researcher.website if not researcher.website.empty?%></td>
+            <td><%= link_to '<i class="foundicon-edit"></i>'.html_safe, edit_researcher_path(researcher) %></td>
+            <!-- <td><%= link_to 'Eliminar', researcher, method: :delete, data: { confirm: '¿Está seguro?' } %></td> -->
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<br>
-
-<%= button_to '+ Agregar investigador', new_researcher_path, :method => :get, :class => "small button" %>
+<div class="row">
+  <%= button_to '+ Agregar investigador', new_researcher_path, :method => :get, :class => "small button" %>
 </div>
