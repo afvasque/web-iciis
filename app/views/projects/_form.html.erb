@@ -108,6 +108,12 @@
       <h2> Sitio de Estudio </h2>
     </div>
 
+  <div class="large-12 columns">
+    <% if @project.new_record? %>
+      <p> Para seleccionar el sitio de estudio debes mover el pin rojo. Se recomienda hacer zoom para tener mayor precisión. </p>
+    <% end %>
+  </div>
+
   <div class="map">
     <div class="large-12 columns">
     <%= gmaps(:markers => { :data => @json, :options => {:draggable => true} },
